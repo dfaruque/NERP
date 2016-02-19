@@ -10,7 +10,7 @@ using System.Web;
 
 namespace NERP.Common
 {
-    public abstract class BaseRow : Row, IIdRow, INameRow
+    public abstract class BaseRow : Row, IIdRow, INameRow, IIsActiveRow
     {
         protected BaseRow(RowFieldsBase fields)
             : base(fields)
@@ -236,6 +236,11 @@ namespace NERP.Common
             get { return Fields.Name; }
         }
 
+        Int16Field IIsActiveRow.IsActiveField
+        {
+            get { return Fields.IsActive; }
+        }
+
         private BaseRowFields Fields;
 
         public class BaseRowFields : RowFieldsBase
@@ -272,6 +277,11 @@ namespace NERP.Common
             {
             }
         }
+
     }
 
+    public static class Statics
+    {
+        public const int DecimalLength = 2;
+    }
 }

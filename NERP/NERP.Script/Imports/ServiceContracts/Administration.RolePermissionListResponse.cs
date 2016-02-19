@@ -13,6 +13,6 @@ namespace NERP.Administration
     public partial class RolePermissionListResponse : ListResponse<String>
     {
     }
-
+    
 }
 

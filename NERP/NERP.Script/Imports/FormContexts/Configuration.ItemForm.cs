@@ -12,22 +12,20 @@ namespace NERP.Configuration
     public partial class ItemForm : PrefixedContext
     {
         [InlineConstant] public const string FormKey = "Configuration.Item";
-
+    
         public ItemForm(string idPrefix) : base(idPrefix) {}
-
-
+    
         public StringEditor Code { get { return ById<StringEditor>("Code"); } }
         public StringEditor Name { get { return ById<StringEditor>("Name"); } }
         public StringEditor Description { get { return ById<StringEditor>("Description"); } }
         public IntegerEditor ItemGroupId { get { return ById<IntegerEditor>("ItemGroupId"); } }
-        public IntegerEditor UomId { get { return ById<IntegerEditor>("UomId"); } }
-        public IntegerEditor ImageId { get { return ById<IntegerEditor>("ImageId"); } }
-        public IntegerEditor SpecificationId { get { return ById<IntegerEditor>("SpecificationId"); } }
-        public IntegerEditor ColorId { get { return ById<IntegerEditor>("ColorId"); } }
-        public IntegerEditor SizeId { get { return ById<IntegerEditor>("SizeId"); } }
-        public IntegerEditor ModelId { get { return ById<IntegerEditor>("ModelId"); } }
-        public IntegerEditor StyleId { get { return ById<IntegerEditor>("StyleId"); } }
-        public IntegerEditor BrandId { get { return ById<IntegerEditor>("BrandId"); } }
+        public LookupEditor UomId { get { return ById<LookupEditor>("UomId"); } }
+        public LookupEditor SpecificationId { get { return ById<LookupEditor>("SpecificationId"); } }
+        public LookupEditor ColorId { get { return ById<LookupEditor>("ColorId"); } }
+        public LookupEditor SizeId { get { return ById<LookupEditor>("SizeId"); } }
+        public LookupEditor ModelId { get { return ById<LookupEditor>("ModelId"); } }
+        public LookupEditor StyleId { get { return ById<LookupEditor>("StyleId"); } }
+        public LookupEditor BrandId { get { return ById<LookupEditor>("BrandId"); } }
         public IntegerEditor CountryId { get { return ById<IntegerEditor>("CountryId"); } }
         public IntegerEditor SeasonId { get { return ById<IntegerEditor>("SeasonId"); } }
         public IntegerEditor PurposeId { get { return ById<IntegerEditor>("PurposeId"); } }
@@ -63,24 +61,6 @@ namespace NERP.Configuration
         public DecimalEditor DefaultQty { get { return ById<DecimalEditor>("DefaultQty"); } }
         public StringEditor DefaultLocationAtStore { get { return ById<StringEditor>("DefaultLocationAtStore"); } }
         public StringEditor Note { get { return ById<StringEditor>("Note"); } }
-        public IntegerEditor ProjectId { get { return ById<IntegerEditor>("ProjectId"); } }
-        public IntegerEditor OrganogramId { get { return ById<IntegerEditor>("OrganogramId"); } }
-        public IntegerEditor ScopeId { get { return ById<IntegerEditor>("ScopeId"); } }
-        public IntegerEditor CompanyId { get { return ById<IntegerEditor>("CompanyId"); } }
-        public IntegerEditor StatusId { get { return ById<IntegerEditor>("StatusId"); } }
-        public DateEditor ActiveOn { get { return ById<DateEditor>("ActiveOn"); } }
-        public DateEditor InactiveOn { get { return ById<DateEditor>("InactiveOn"); } }
-        public IntegerEditor IsActive { get { return ById<IntegerEditor>("IsActive"); } }
-        public IntegerEditor DbId { get { return ById<IntegerEditor>("DbId"); } }
-        public IntegerEditor CreatedBy { get { return ById<IntegerEditor>("CreatedBy"); } }
-        public DateEditor CreatedOn { get { return ById<DateEditor>("CreatedOn"); } }
-        public StringEditor CreatedPc { get { return ById<StringEditor>("CreatedPc"); } }
-        public IntegerEditor UpdatedBy { get { return ById<IntegerEditor>("UpdatedBy"); } }
-        public DateEditor UpdatedOn { get { return ById<DateEditor>("UpdatedOn"); } }
-        public StringEditor UpdatedPc { get { return ById<StringEditor>("UpdatedPc"); } }
-        public IntegerEditor DeletedBy { get { return ById<IntegerEditor>("DeletedBy"); } }
-        public DateEditor DeletedOn { get { return ById<DateEditor>("DeletedOn"); } }
-        public StringEditor DeletedPc { get { return ById<StringEditor>("DeletedPc"); } }
-        public IntegerEditor IsDelete { get { return ById<IntegerEditor>("IsDelete"); } }
     }
 }
+

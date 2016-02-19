@@ -13,14 +13,10 @@ namespace NERP.Sales
     public partial class CustomerRow
     {
         [InlineConstant] public const string IdProperty = "Id";
-        [InlineConstant] public const string NameProperty = "Code";
         [InlineConstant] public const string IsActiveProperty = "IsActive";
+        [InlineConstant] public const string NameProperty = "Name";
         [InlineConstant] public const string LocalTextPrefix = "Sales.Customer";
-
-        public Int32? Id { get; set; }
-        public String Code { get; set; }
-        public String Name { get; set; }
-        public String Description { get; set; }
+    
         public Int32? UserTypeId { get; set; }
         public Int32? UserGroupId { get; set; }
         public String FirstName { get; set; }
@@ -37,9 +33,17 @@ namespace NERP.Sales
         public String Password { get; set; }
         public Int16? IsTaxable { get; set; }
         public Decimal? CommissionRate { get; set; }
+        public String ProjectName { get; set; }
+        public String CompanyName { get; set; }
+        public Int32? Id { get; set; }
+        public String Code { get; set; }
+        public String Name { get; set; }
+        public String Description { get; set; }
         public String Note { get; set; }
         public Int32? ProjectId { get; set; }
+        public String Project { get; set; }
         public Int32? OrganogramId { get; set; }
+        public String Organogram { get; set; }
         public Int32? ScopeId { get; set; }
         public Int32? CompanyId { get; set; }
         public Int32? StatusId { get; set; }
@@ -49,97 +53,18 @@ namespace NERP.Sales
         public Int32? DbId { get; set; }
         public Int32? CreatedBy { get; set; }
         public String CreatedOn { get; set; }
-        //public String CreatedPc { get; set; }
+        public String CreatedPc { get; set; }
         public Int32? UpdatedBy { get; set; }
         public String UpdatedOn { get; set; }
-        //public String UpdatedPc { get; set; }
+        public String UpdatedPc { get; set; }
         public Int32? DeletedBy { get; set; }
         public String DeletedOn { get; set; }
-        //public String DeletedPc { get; set; }
+        public String DeletedPc { get; set; }
         public Int16? IsDelete { get; set; }
-        public String ImageCode { get; set; }
-        public String ImageName { get; set; }
-        public String ImageDescription { get; set; }
-        public Int32? ImageImageTypeId { get; set; }
-        public String ImagePath { get; set; }
-        public Decimal? ImageSizeKb { get; set; }
-        public Decimal? ImageWidePixel { get; set; }
-        public Decimal? ImageHeightPixel { get; set; }
-        public String ImageNote { get; set; }
-        public Int32? ImageProjectId { get; set; }
-        public Int32? ImageOrganogramId { get; set; }
-        public Int32? ImageScopeId { get; set; }
-        public Int32? ImageCompanyId { get; set; }
-        public Int32? ImageStatusId { get; set; }
-        public String ImageActiveOn { get; set; }
-        public String ImageInactiveOn { get; set; }
-        public Int16? ImageIsActive { get; set; }
-        public Int32? ImageDbId { get; set; }
-        public Int32? ImageCreatedBy { get; set; }
-        public String ImageCreatedOn { get; set; }
-        public String ImageCreatedPc { get; set; }
-        public Int32? ImageUpdatedBy { get; set; }
-        public String ImageUpdatedOn { get; set; }
-        public String ImageUpdatedPc { get; set; }
-        public Int32? ImageDeletedBy { get; set; }
-        public String ImageDeletedOn { get; set; }
-        public String ImageDeletedPc { get; set; }
-        public Int16? ImageIsDelete { get; set; }
-        public String ProjectCode { get; set; }
-        public String ProjectName { get; set; }
-        public String ProjectDescription { get; set; }
-        public String ProjectNote { get; set; }
-        public Int32? ProjectProjectId { get; set; }
-        public Int32? ProjectOrganogramId { get; set; }
-        public Int32? ProjectScopeId { get; set; }
-        public Int32? ProjectCompanyId { get; set; }
-        public Int32? ProjectStatusId { get; set; }
-        public String ProjectActiveOn { get; set; }
-        public String ProjectInactiveOn { get; set; }
-        public Int16? ProjectIsActive { get; set; }
-        public Int32? ProjectDbId { get; set; }
-        public Int32? ProjectCreatedBy { get; set; }
-        public String ProjectCreatedOn { get; set; }
-        public String ProjectCreatedPc { get; set; }
-        public Int32? ProjectUpdatedBy { get; set; }
-        public String ProjectUpdatedOn { get; set; }
-        public String ProjectUpdatedPc { get; set; }
-        public Int32? ProjectDeletedBy { get; set; }
-        public String ProjectDeletedOn { get; set; }
-        public String ProjectDeletedPc { get; set; }
-        public Int16? ProjectIsDelete { get; set; }
-        public String CompanyCode { get; set; }
-        public String CompanyName { get; set; }
-        public String CompanyDescription { get; set; }
-        public Int32? CompanyImageId { get; set; }
-        public String CompanyNote { get; set; }
-        public Int32? CompanyProjectId { get; set; }
-        public Int32? CompanyOrganogramId { get; set; }
-        public Int32? CompanyScopeId { get; set; }
-        public Int32? CompanyCompanyId { get; set; }
-        public Int32? CompanyStatusId { get; set; }
-        public String CompanyActiveOn { get; set; }
-        public String CompanyInactiveOn { get; set; }
-        public Int16? CompanyIsActive { get; set; }
-        public Int32? CompanyDbId { get; set; }
-        public Int32? CompanyCreatedBy { get; set; }
-        public String CompanyCreatedOn { get; set; }
-        public String CompanyCreatedPc { get; set; }
-        public Int32? CompanyUpdatedBy { get; set; }
-        public String CompanyUpdatedOn { get; set; }
-        public String CompanyUpdatedPc { get; set; }
-        public Int32? CompanyDeletedBy { get; set; }
-        public String CompanyDeletedOn { get; set; }
-        public String CompanyDeletedPc { get; set; }
-        public Int16? CompanyIsDelete { get; set; }
-
+    
         [Imported, PreserveMemberCase]
         public static class Fields
         {
-            [InlineConstant] public const string Id = "Id";
-            [InlineConstant] public const string Code = "Code";
-            [InlineConstant] public const string Name = "Name";
-            [InlineConstant] public const string Description = "Description";
             [InlineConstant] public const string UserTypeId = "UserTypeId";
             [InlineConstant] public const string UserGroupId = "UserGroupId";
             [InlineConstant] public const string FirstName = "FirstName";
@@ -156,9 +81,17 @@ namespace NERP.Sales
             [InlineConstant] public const string Password = "Password";
             [InlineConstant] public const string IsTaxable = "IsTaxable";
             [InlineConstant] public const string CommissionRate = "CommissionRate";
+            [InlineConstant] public const string ProjectName = "ProjectName";
+            [InlineConstant] public const string CompanyName = "CompanyName";
+            [InlineConstant] public const string Id = "Id";
+            [InlineConstant] public const string Code = "Code";
+            [InlineConstant] public const string Name = "Name";
+            [InlineConstant] public const string Description = "Description";
             [InlineConstant] public const string Note = "Note";
             [InlineConstant] public const string ProjectId = "ProjectId";
+            [InlineConstant] public const string Project = "Project";
             [InlineConstant] public const string OrganogramId = "OrganogramId";
+            [InlineConstant] public const string Organogram = "Organogram";
             [InlineConstant] public const string ScopeId = "ScopeId";
             [InlineConstant] public const string CompanyId = "CompanyId";
             [InlineConstant] public const string StatusId = "StatusId";
@@ -176,81 +109,8 @@ namespace NERP.Sales
             [InlineConstant] public const string DeletedOn = "DeletedOn";
             [InlineConstant] public const string DeletedPc = "DeletedPc";
             [InlineConstant] public const string IsDelete = "IsDelete";
-            [InlineConstant] public const string ImageCode = "ImageCode";
-            [InlineConstant] public const string ImageName = "ImageName";
-            [InlineConstant] public const string ImageDescription = "ImageDescription";
-            [InlineConstant] public const string ImageImageTypeId = "ImageImageTypeId";
-            [InlineConstant] public const string ImagePath = "ImagePath";
-            [InlineConstant] public const string ImageSizeKb = "ImageSizeKb";
-            [InlineConstant] public const string ImageWidePixel = "ImageWidePixel";
-            [InlineConstant] public const string ImageHeightPixel = "ImageHeightPixel";
-            [InlineConstant] public const string ImageNote = "ImageNote";
-            [InlineConstant] public const string ImageProjectId = "ImageProjectId";
-            [InlineConstant] public const string ImageOrganogramId = "ImageOrganogramId";
-            [InlineConstant] public const string ImageScopeId = "ImageScopeId";
-            [InlineConstant] public const string ImageCompanyId = "ImageCompanyId";
-            [InlineConstant] public const string ImageStatusId = "ImageStatusId";
-            [InlineConstant] public const string ImageActiveOn = "ImageActiveOn";
-            [InlineConstant] public const string ImageInactiveOn = "ImageInactiveOn";
-            [InlineConstant] public const string ImageIsActive = "ImageIsActive";
-            [InlineConstant] public const string ImageDbId = "ImageDbId";
-            [InlineConstant] public const string ImageCreatedBy = "ImageCreatedBy";
-            [InlineConstant] public const string ImageCreatedOn = "ImageCreatedOn";
-            [InlineConstant] public const string ImageCreatedPc = "ImageCreatedPc";
-            [InlineConstant] public const string ImageUpdatedBy = "ImageUpdatedBy";
-            [InlineConstant] public const string ImageUpdatedOn = "ImageUpdatedOn";
-            [InlineConstant] public const string ImageUpdatedPc = "ImageUpdatedPc";
-            [InlineConstant] public const string ImageDeletedBy = "ImageDeletedBy";
-            [InlineConstant] public const string ImageDeletedOn = "ImageDeletedOn";
-            [InlineConstant] public const string ImageDeletedPc = "ImageDeletedPc";
-            [InlineConstant] public const string ImageIsDelete = "ImageIsDelete";
-            [InlineConstant] public const string ProjectCode = "ProjectCode";
-            [InlineConstant] public const string ProjectName = "ProjectName";
-            [InlineConstant] public const string ProjectDescription = "ProjectDescription";
-            [InlineConstant] public const string ProjectNote = "ProjectNote";
-            [InlineConstant] public const string ProjectProjectId = "ProjectProjectId";
-            [InlineConstant] public const string ProjectOrganogramId = "ProjectOrganogramId";
-            [InlineConstant] public const string ProjectScopeId = "ProjectScopeId";
-            [InlineConstant] public const string ProjectCompanyId = "ProjectCompanyId";
-            [InlineConstant] public const string ProjectStatusId = "ProjectStatusId";
-            [InlineConstant] public const string ProjectActiveOn = "ProjectActiveOn";
-            [InlineConstant] public const string ProjectInactiveOn = "ProjectInactiveOn";
-            [InlineConstant] public const string ProjectIsActive = "ProjectIsActive";
-            [InlineConstant] public const string ProjectDbId = "ProjectDbId";
-            [InlineConstant] public const string ProjectCreatedBy = "ProjectCreatedBy";
-            [InlineConstant] public const string ProjectCreatedOn = "ProjectCreatedOn";
-            [InlineConstant] public const string ProjectCreatedPc = "ProjectCreatedPc";
-            [InlineConstant] public const string ProjectUpdatedBy = "ProjectUpdatedBy";
-            [InlineConstant] public const string ProjectUpdatedOn = "ProjectUpdatedOn";
-            [InlineConstant] public const string ProjectUpdatedPc = "ProjectUpdatedPc";
-            [InlineConstant] public const string ProjectDeletedBy = "ProjectDeletedBy";
-            [InlineConstant] public const string ProjectDeletedOn = "ProjectDeletedOn";
-            [InlineConstant] public const string ProjectDeletedPc = "ProjectDeletedPc";
-            [InlineConstant] public const string ProjectIsDelete = "ProjectIsDelete";
-            [InlineConstant] public const string CompanyCode = "CompanyCode";
-            [InlineConstant] public const string CompanyName = "CompanyName";
-            [InlineConstant] public const string CompanyDescription = "CompanyDescription";
-            [InlineConstant] public const string CompanyImageId = "CompanyImageId";
-            [InlineConstant] public const string CompanyNote = "CompanyNote";
-            [InlineConstant] public const string CompanyProjectId = "CompanyProjectId";
-            [InlineConstant] public const string CompanyOrganogramId = "CompanyOrganogramId";
-            [InlineConstant] public const string CompanyScopeId = "CompanyScopeId";
-            [InlineConstant] public const string CompanyCompanyId = "CompanyCompanyId";
-            [InlineConstant] public const string CompanyStatusId = "CompanyStatusId";
-            [InlineConstant] public const string CompanyActiveOn = "CompanyActiveOn";
-            [InlineConstant] public const string CompanyInactiveOn = "CompanyInactiveOn";
-            [InlineConstant] public const string CompanyIsActive = "CompanyIsActive";
-            [InlineConstant] public const string CompanyDbId = "CompanyDbId";
-            [InlineConstant] public const string CompanyCreatedBy = "CompanyCreatedBy";
-            [InlineConstant] public const string CompanyCreatedOn = "CompanyCreatedOn";
-            [InlineConstant] public const string CompanyCreatedPc = "CompanyCreatedPc";
-            [InlineConstant] public const string CompanyUpdatedBy = "CompanyUpdatedBy";
-            [InlineConstant] public const string CompanyUpdatedOn = "CompanyUpdatedOn";
-            [InlineConstant] public const string CompanyUpdatedPc = "CompanyUpdatedPc";
-            [InlineConstant] public const string CompanyDeletedBy = "CompanyDeletedBy";
-            [InlineConstant] public const string CompanyDeletedOn = "CompanyDeletedOn";
-            [InlineConstant] public const string CompanyDeletedPc = "CompanyDeletedPc";
-            [InlineConstant] public const string CompanyIsDelete = "CompanyIsDelete";
         }
     }
+    
 }
+

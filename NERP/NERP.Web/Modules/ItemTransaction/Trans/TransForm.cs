@@ -15,7 +15,7 @@ namespace NERP.ItemTransaction.Forms
     public class TransForm
     {
         public String Code { get; set; }
-        public String Name { get; set; }
+        //public String Name { get; set; }
         public String Description { get; set; }
         public DateTime DateTime { get; set; }
         public Int32 TransTypeId { get; set; }

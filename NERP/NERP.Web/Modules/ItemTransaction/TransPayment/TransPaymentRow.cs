@@ -31,7 +31,7 @@ namespace NERP.ItemTransaction.Entities
             set { Fields.PaymentMethodId[this] = value; }
         }
 
-        [DisplayName("Payment Amt"), Column("Payment_Amt"), Size(18), Scale(6)]
+        [DisplayName("Payment Amt"), Column("Payment_Amt"), Size(18), Scale(Statics.DecimalLength)]
         public Decimal? PaymentAmt
         {
             get { return Fields.PaymentAmt[this]; }

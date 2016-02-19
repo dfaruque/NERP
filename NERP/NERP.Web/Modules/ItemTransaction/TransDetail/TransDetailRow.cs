@@ -17,6 +17,19 @@ namespace NERP.ItemTransaction.Entities
     [ModifyPermission("Administration")]
     public sealed class TransDetailRow : BaseRow
     {
+        [DisplayName("Id"), PrimaryKey, Identity]
+        public new Int32? Id
+        {
+            get { return Fields.Id[this]; }
+            set { Fields.Id[this] = value; }
+        }
+        public new String Name //Hide purpose
+        {
+            get { return Fields.Name[this]; }
+            set { Fields.Name[this] = value; }
+        }
+
+        
         [DisplayName("Trans"), Column("Trans_Id"), ForeignKey("[dbo].[Trans]", "Id"), LeftJoin("jTrans"), TextualField("TransCode")]
         public Int32? TransId
         {
@@ -31,14 +44,15 @@ namespace NERP.ItemTransaction.Entities
             set { Fields.TransTypeId[this] = value; }
         }
 
-        [DisplayName("Item"), Column("Item_Id"), NotNull, ForeignKey("[dbo].[Item]", "Id"), LeftJoin("jItem"), TextualField("ItemName")]
+        [DisplayName("Item"), Column("Item_Id"), NotNull, ForeignKey("[dbo].[Item]", "Id"), LeftJoin("jItem")]
         [LookupEditor(typeof(ItemRow),InplaceAdd=true)]
         public Int32? ItemId
         {
             get { return Fields.ItemId[this]; }
             set { Fields.ItemId[this] = value; }
         }
-        [DisplayName("Item"), Expression("jItem.[Name]")]
+        [DisplayName("Item"), Expression("jItem.[Name]"), MinSelectLevel(SelectLevel.List)]
+        [EditLink]
         public string ItemName
         {
             get { return Fields.ItemName[this]; }
@@ -53,36 +67,39 @@ namespace NERP.ItemTransaction.Entities
             set { Fields.ItemDetailId[this] = value; }
         }
 
-        [DisplayName("Uom"), Column("Uom_Id"), ForeignKey("[dbo].[Uom]", "Id"), LeftJoin("jUom"), TextualField("UomName")]
+        [DisplayName("Uom"), Column("Uom_Id"), ForeignKey("[dbo].[Uom]", "Id"), LeftJoin("jUom")]
         [LookupEditor(typeof(UomRow),InplaceAdd=true)]
         public Int32? UomId
         {
             get { return Fields.UomId[this]; }
             set { Fields.UomId[this] = value; }
         }
-        [DisplayName("Uom"), Expression("jUom.[Name]")]
+        [DisplayName("Uom"), Expression("jUom.[Name]"), MinSelectLevel(SelectLevel.List)]
+        [Width(80)]
         public string UomName
         {
             get { return Fields.UomName[this]; }
             set { Fields.UomName[this] = value; }
         }
 
-        [DisplayName("Quantity"), Size(18), Scale(6), NotNull]
+        [DisplayName("Quantity"), Size(18), Scale(Statics.DecimalLength), NotNull, DefaultValue(0)]
+        [AlignRight]
         public Decimal? Quantity
         {
             get { return Fields.Quantity[this]; }
             set { Fields.Quantity[this] = value; }
         }
 
-        [DisplayName("Sample Qty"), Column("Sample_Qty"), Size(18), Scale(6), NotNull]
-        [Visible(false)]
+        [DisplayName("Sample Qty"), Column("Sample_Qty"), Size(18), Scale(Statics.DecimalLength), DefaultValue(0)]
+        [AlignRight, Visible(false)]
         public Decimal? SampleQty
         {
             get { return Fields.SampleQty[this]; }
             set { Fields.SampleQty[this] = value; }
         }
 
-        [DisplayName("Over Qty"), Column("Over_Qty"), Size(18), Scale(6), NotNull]
+        [DisplayName("Over Qty"), Column("Over_Qty"), Size(18), Scale(Statics.DecimalLength), DefaultValue(0)]
+        [AlignRight]
         [Visible(false)]
         public Decimal? OverQty
         {
@@ -90,59 +107,70 @@ namespace NERP.ItemTransaction.Entities
             set { Fields.OverQty[this] = value; }
         }
 
-        [DisplayName("Line Total Qty"), Column("Line_Total_Qty"), Size(20), Scale(6)]
+        [DisplayName("Line Total Qty"), Expression("(t0.[Quantity]+t0.[Sample_Qty])+t0.[Over_Qty]")]
         [Visible(false)]
+        [AlignRight]
+
         public Decimal? LineTotalQty
         {
             get { return Fields.LineTotalQty[this]; }
             set { Fields.LineTotalQty[this] = value; }
         }
 
-        [DisplayName("Max Qty"), Column("Max_Qty"), Size(18), Scale(6), NotNull]
+        [DisplayName("Max Qty"), Column("Max_Qty"), Size(18), Scale(Statics.DecimalLength), DefaultValue(0)]
         [Visible(false)]
+        [AlignRight]
+
         public Decimal? MaxQty
         {
             get { return Fields.MaxQty[this]; }
             set { Fields.MaxQty[this] = value; }
         }
 
-        [DisplayName("Balance Qty"), Column("Balance_Qty"), Size(21), Scale(6)]
+        [DisplayName("Balance Qty"), Expression("((t0.[Quantity]+t0.[Sample_Qty])+t0.[Over_Qty])-t0.[Max_Qty]")]
         [Visible(false)]
+        [AlignRight]
+
         public Decimal? BalanceQty
         {
             get { return Fields.BalanceQty[this]; }
             set { Fields.BalanceQty[this] = value; }
         }
 
-        [DisplayName("Unit Price"), Column("Unit_Price"), Size(18), Scale(6), NotNull]
+        [DisplayName("Unit Price"), Column("Unit_Price"), Size(18), Scale(Statics.DecimalLength), DefaultValue(0)]
+        [AlignRight]
         public Decimal? UnitPrice
         {
             get { return Fields.UnitPrice[this]; }
             set { Fields.UnitPrice[this] = value; }
         }
 
-        [DisplayName("Amount"), Size(38), Scale(12)]
+        [AlignRight]
+        [DisplayName("Amount"), Expression("(t0.[Quantity]+t0.[Over_Qty])*t0.[Unit_Price]")]
         public Decimal? Amount
         {
             get { return Fields.Amount[this]; }
             set { Fields.Amount[this] = value; }
         }
 
-        [DisplayName("Tax Amt"), Column("Tax_Amt"), Size(18), Scale(6), NotNull]
+        [DisplayName("Tax Amt"), Column("Tax_Amt"), Size(18), Scale(Statics.DecimalLength), DefaultValue(0)]
+        [AlignRight]
         public Decimal? TaxAmt
         {
             get { return Fields.TaxAmt[this]; }
             set { Fields.TaxAmt[this] = value; }
         }
 
-        [DisplayName("Discount Amt"), Column("Discount_Amt"), Size(18), Scale(6), NotNull]
+        [DisplayName("Discount Amt"), Column("Discount_Amt"), Size(18), Scale(Statics.DecimalLength), DefaultValue(0)]
+        [AlignRight]
         public Decimal? DiscountAmt
         {
             get { return Fields.DiscountAmt[this]; }
             set { Fields.DiscountAmt[this] = value; }
         }
 
-        [DisplayName("Line Total Amt"), Column("Line_Total_Amt"), Size(38), Scale(12)]
+        [DisplayName("Line Total Amt"), Expression("(t0.[Quantity]*t0.[Unit_Price]+t0.[Tax_Amt])+t0.[Discount_Amt]")]
+        [AlignRight]
         public Decimal? LineTotalAmt
         {
             get { return Fields.LineTotalAmt[this]; }
@@ -189,7 +217,7 @@ namespace NERP.ItemTransaction.Entities
             set { Fields.IsDebit[this] = value; }
         }
 
-        [DisplayName("Dr Amt"), Column("Dr_Amt"), Size(18), Scale(6), NotNull]
+        [DisplayName("Dr Amt"), Column("Dr_Amt"), Size(18), Scale(Statics.DecimalLength), DefaultValue(0)]
         [Visible(false)]
         public Decimal? DrAmt
         {
@@ -197,7 +225,7 @@ namespace NERP.ItemTransaction.Entities
             set { Fields.DrAmt[this] = value; }
         }
 
-        [DisplayName("Cr Amt"), Column("Cr_Amt"), Size(18), Scale(6), NotNull]
+        [DisplayName("Cr Amt"), Column("Cr_Amt"), Size(18), Scale(Statics.DecimalLength), DefaultValue(0)]
         [Visible(false)]
         public Decimal? CrAmt
         {

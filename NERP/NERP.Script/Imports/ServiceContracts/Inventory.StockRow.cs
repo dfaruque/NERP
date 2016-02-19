@@ -13,10 +13,9 @@ namespace NERP.Inventory
     public partial class StockRow
     {
         [InlineConstant] public const string IdProperty = "Id";
-        [InlineConstant] public const string NameProperty = "Code";
-        [InlineConstant] public const string IsActiveProperty = "IsActive";
+        [InlineConstant] public const string NameProperty = "Name";
         [InlineConstant] public const string LocalTextPrefix = "Inventory.Stock";
-
+    
         public Int32? Id { get; set; }
         public String Code { get; set; }
         public String Name { get; set; }
@@ -47,15 +46,15 @@ namespace NERP.Inventory
         public Int32? DbId { get; set; }
         public Int32? CreatedBy { get; set; }
         public String CreatedOn { get; set; }
-        //public String CreatedPc { get; set; }
+        public String CreatedPc { get; set; }
         public Int32? UpdatedBy { get; set; }
         public String UpdatedOn { get; set; }
-        //public String UpdatedPc { get; set; }
+        public String UpdatedPc { get; set; }
         public Int32? DeletedBy { get; set; }
         public String DeletedOn { get; set; }
-        //public String DeletedPc { get; set; }
+        public String DeletedPc { get; set; }
         public Int16? IsDelete { get; set; }
-
+    
         [Imported, PreserveMemberCase]
         public static class Fields
         {
@@ -99,4 +98,6 @@ namespace NERP.Inventory
             [InlineConstant] public const string IsDelete = "IsDelete";
         }
     }
+    
 }
+

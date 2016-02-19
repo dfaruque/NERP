@@ -4,6 +4,15 @@ namespace MVC
 {
     public static class Views
     {
+        public static class Accounting
+        {
+            public static class COA
+            {
+                public const string COAIndex = "~/Modules/Accounting/COA/COAIndex.cshtml";
+            }
+
+        }
+
         public static class Administration
         {
             public static class Language
@@ -90,11 +99,137 @@ namespace MVC
             {
                 public const string DashboardIndex = "~/Modules/Common/Dashboard/DashboardIndex.cshtml";
             }
+
+        }
+
+        public static class Configuration
+        {
+            public static class Brand
+            {
+                public const string BrandIndex = "~/Modules/Configuration/Brand/BrandIndex.cshtml";
+            }
+
+            public static class Color
+            {
+                public const string ColorIndex = "~/Modules/Configuration/Color/ColorIndex.cshtml";
+            }
+
+            public static class Currency
+            {
+                public const string CurrencyIndex = "~/Modules/Configuration/Currency/CurrencyIndex.cshtml";
+            }
+
+            public static class GenericItem
+            {
+                public const string GenericItemIndex = "~/Modules/Configuration/GenericItem/GenericItemIndex.cshtml";
+            }
+
+            public static class Item
+            {
+                public const string ItemIndex = "~/Modules/Configuration/Item/ItemIndex.cshtml";
+            }
+
+            public static class ItemCategory
+            {
+                public const string ItemCategoryIndex = "~/Modules/Configuration/ItemCategory/ItemCategoryIndex.cshtml";
+            }
+
+            public static class ItemTax
+            {
+                public const string ItemTaxIndex = "~/Modules/Configuration/ItemTax/ItemTaxIndex.cshtml";
+            }
+
+            public static class Model
+            {
+                public const string ModelIndex = "~/Modules/Configuration/Model/ModelIndex.cshtml";
+            }
+
+            public static class Organogram
+            {
+                public const string OrganogramIndex = "~/Modules/Configuration/Organogram/OrganogramIndex.cshtml";
+            }
+
+            public static class PaymentMethod
+            {
+                public const string PaymentMethodIndex = "~/Modules/Configuration/PaymentMethod/PaymentMethodIndex.cshtml";
+            }
+
+            public static class Project
+            {
+                public const string ProjectIndex = "~/Modules/Configuration/Project/ProjectIndex.cshtml";
+            }
+
+            public static class Size
+            {
+                public const string SizeIndex = "~/Modules/Configuration/Size/SizeIndex.cshtml";
+            }
+
+            public static class Specification
+            {
+                public const string SpecificationIndex = "~/Modules/Configuration/Specification/SpecificationIndex.cshtml";
+            }
+
+            public static class Style
+            {
+                public const string StyleIndex = "~/Modules/Configuration/Style/StyleIndex.cshtml";
+            }
+
+            public static class Tax
+            {
+                public const string TaxIndex = "~/Modules/Configuration/Tax/TaxIndex.cshtml";
+            }
+
+            public static class Uom
+            {
+                public const string UomIndex = "~/Modules/Configuration/Uom/UomIndex.cshtml";
+            }
         }
 
         public static class Errors
         {
             public const string ValidationError = "~/Views/Errors/ValidationError.cshtml";
+        }
+
+        public static class HR
+        {
+            public static class Employee
+            {
+                public const string EmployeeIndex = "~/Modules/HR/Employee/EmployeeIndex.cshtml";
+            }
+
+        }
+
+        public static class Inventory
+        {
+            public static class Stock
+            {
+                public const string StockIndex = "~/Modules/Inventory/Stock/StockIndex.cshtml";
+            }
+
+        }
+
+        public static class ItemTransaction
+        {
+            public static class Trans
+            {
+                public const string TransIndex = "~/Modules/ItemTransaction/Trans/TransIndex.cshtml";
+            }
+
+            public static class TransDetail
+            {
+                public const string TransDetailIndex = "~/Modules/ItemTransaction/TransDetail/TransDetailIndex.cshtml";
+            }
+
+            public static class TransPayment
+            {
+                public const string TransPaymentIndex = "~/Modules/ItemTransaction/TransPayment/TransPaymentIndex.cshtml";
+            }
+
+            public static class TransTax
+            {
+                public const string TransTaxIndex = "~/Modules/ItemTransaction/TransTax/TransTaxIndex.cshtml";
+            }
+
         }
 
         public static class Membership
@@ -192,6 +327,24 @@ namespace MVC
             public static class Territory
             {
                 public const string TerritoryIndex = "~/Modules/Northwind/Territory/TerritoryIndex.cshtml";
+            }
+
+        }
+
+        public static class Purchase
+        {
+            public static class Supplier
+            {
+                public const string SupplierIndex = "~/Modules/Purchase/Supplier/SupplierIndex.cshtml";
+            }
+
+        }
+
+        public static class Sales
+        {
+            public static class Customer
+            {
+                public const string CustomerIndex = "~/Modules/Sales/Customer/CustomerIndex.cshtml";
             }
         }
 

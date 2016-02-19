@@ -169,7 +169,7 @@ namespace NERP.Configuration.Entities
             set { Fields.Barcode[this] = value; }
         }
 
-        [DisplayName("Unit Weight"), Column("Unit_Weight"), Size(18), Scale(6)]
+        [DisplayName("Unit Weight"), Column("Unit_Weight"), Size(18), Scale(Statics.DecimalLength)]
         [Visible(false)]
         public Decimal? UnitWeight
         {
@@ -185,7 +185,7 @@ namespace NERP.Configuration.Entities
             set { Fields.WeightUomId[this] = value; }
         }
 
-        [DisplayName("Reorder Level"), Column("Reorder_Level"), Size(18), Scale(6), NotNull]
+        [DisplayName("Reorder Level"), Column("Reorder_Level"), Size(18), Scale(Statics.DecimalLength), NotNull]
         [Visible(false)]
         public Decimal? ReorderLevel
         {
@@ -193,7 +193,7 @@ namespace NERP.Configuration.Entities
             set { Fields.ReorderLevel[this] = value; }
         }
 
-        [DisplayName("Cost Price"), Column("Cost_Price"), Size(18), Scale(6), NotNull]
+        [DisplayName("Cost Price"), Column("Cost_Price"), Size(18), Scale(Statics.DecimalLength), NotNull]
         [Visible(false)]
         public Decimal? CostPrice
         {
@@ -201,7 +201,7 @@ namespace NERP.Configuration.Entities
             set { Fields.CostPrice[this] = value; }
         }
 
-        [DisplayName("Selling Price"), Column("Selling_Price"), Size(18), Scale(6), NotNull]
+        [DisplayName("Selling Price"), Column("Selling_Price"), Size(18), Scale(Statics.DecimalLength), NotNull]
         [Visible(false)]
         public Decimal? SellingPrice
         {
@@ -209,7 +209,7 @@ namespace NERP.Configuration.Entities
             set { Fields.SellingPrice[this] = value; }
         }
 
-        [DisplayName("Promo Price"), Column("Promo_Price"), Size(18), Scale(6), NotNull]
+        [DisplayName("Promo Price"), Column("Promo_Price"), Size(18), Scale(Statics.DecimalLength), NotNull]
         [Visible(false)]
         public Decimal? PromoPrice
         {
@@ -233,7 +233,7 @@ namespace NERP.Configuration.Entities
             set { Fields.PromoEndDate[this] = value; }
         }
 
-        [DisplayName("Commission Amt"), Column("Commission_Amt"), Size(18), Scale(6)]
+        [DisplayName("Commission Amt"), Column("Commission_Amt"), Size(18), Scale(Statics.DecimalLength)]
         [Visible(false)]
         public Decimal? CommissionAmt
         {
@@ -305,7 +305,7 @@ namespace NERP.Configuration.Entities
             set { Fields.Tax5[this] = value; }
         }
 
-        [DisplayName("Tax1 Rate"), Column("Tax1_Rate"), Size(18), Scale(6), NotNull]
+        [DisplayName("Tax1 Rate"), Column("Tax1_Rate"), Size(18), Scale(Statics.DecimalLength), NotNull]
         [Visible(false)]
         public Decimal? Tax1Rate
         {
@@ -313,7 +313,7 @@ namespace NERP.Configuration.Entities
             set { Fields.Tax1Rate[this] = value; }
         }
 
-        [DisplayName("Tax2 Rate"), Column("Tax2_Rate"), Size(18), Scale(6), NotNull]
+        [DisplayName("Tax2 Rate"), Column("Tax2_Rate"), Size(18), Scale(Statics.DecimalLength), NotNull]
         [Visible(false)]
         public Decimal? Tax2Rate
         {
@@ -321,7 +321,7 @@ namespace NERP.Configuration.Entities
             set { Fields.Tax2Rate[this] = value; }
         }
 
-        [DisplayName("Tax3 Rate"), Column("Tax3_Rate"), Size(18), Scale(6), NotNull]
+        [DisplayName("Tax3 Rate"), Column("Tax3_Rate"), Size(18), Scale(Statics.DecimalLength), NotNull]
         [Visible(false)]
         public Decimal? Tax3Rate
         {
@@ -329,7 +329,7 @@ namespace NERP.Configuration.Entities
             set { Fields.Tax3Rate[this] = value; }
         }
 
-        [DisplayName("Tax4 Rate"), Column("Tax4_Rate"), Size(18), Scale(6), NotNull]
+        [DisplayName("Tax4 Rate"), Column("Tax4_Rate"), Size(18), Scale(Statics.DecimalLength), NotNull]
         [Visible(false)]
         public Decimal? Tax4Rate
         {
@@ -337,7 +337,7 @@ namespace NERP.Configuration.Entities
             set { Fields.Tax4Rate[this] = value; }
         }
 
-        [DisplayName("Tax5 Rate"), Column("Tax5_Rate"), Size(18), Scale(6), NotNull]
+        [DisplayName("Tax5 Rate"), Column("Tax5_Rate"), Size(18), Scale(Statics.DecimalLength), NotNull]
         [Visible(false)]
         public Decimal? Tax5Rate
         {
@@ -345,7 +345,7 @@ namespace NERP.Configuration.Entities
             set { Fields.Tax5Rate[this] = value; }
         }
 
-        [DisplayName("Default Qty"), Column("Default_Qty"), Size(18), Scale(6)]
+        [DisplayName("Default Qty"), Column("Default_Qty"), Size(18), Scale(Statics.DecimalLength)]
         [Visible(false)]
         public Decimal? DefaultQty
         {

@@ -53,7 +53,7 @@ using System.IO;
             set { Fields.ThousandSeparator[this] = value; }
         }
 
-        [DisplayName("Rate To Dollar"), Column("Rate_To_Dollar"), Size(18), Scale(6), NotNull]
+        [DisplayName("Rate To Dollar"), Column("Rate_To_Dollar"), Size(18), Scale(Statics.DecimalLength), NotNull]
         public Decimal? RateToDollar
         {
             get { return Fields.RateToDollar[this]; }

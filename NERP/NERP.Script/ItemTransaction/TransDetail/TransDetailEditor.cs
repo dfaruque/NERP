@@ -2,14 +2,15 @@
 namespace NERP.ItemTransaction
 {
     using jQueryApi;
-using NERP.Common;
-using Serenity;
-using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+    using NERP.Common;
+    using NERP.Configuration;
+    using Serenity;
+    using System;
+    using System.Collections.Generic;
+    using System.Runtime.CompilerServices;
 
 
-    [ColumnsKey(TransDetailRow.LocalTextPrefix), LocalTextPrefix(TransDetailRow.LocalTextPrefix)]
+    [ColumnsKey("ItemTransaction.TransDetail"), LocalTextPrefix("ItemTransaction.TransDetail")]
     [DialogType(typeof(TransDetailEditDialog))]
     public class TransDetailEditor : GridEditorBase<TransDetailRow>
     {
@@ -24,10 +25,20 @@ using System.Runtime.CompilerServices;
             toolbar.Element.Append(input);
             input.Click(e =>
             {
-
-                Items.As<dynamic>().Add(new { ItemId=3, Name = "dfsa" });
+                AddEntity(new TransDetailRow { ItemId=3, Name = "dfsa" });
             });
             base.CreateToolbarExtensions();
+        }
+
+        protected override bool ValidateEntity(TransDetailRow row, int? id)
+        {
+            if (!base.ValidateEntity(row, id))
+                return false;
+
+            row.ItemName = ItemRow.Lookup.ItemById[row.ItemId.Value].Name;
+            row.UomName = UomRow.Lookup.ItemById[row.UomId.Value].Name;
+
+            return true;
         }
     }
 }

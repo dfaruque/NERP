@@ -44,6 +44,9 @@
     <Compile Include="Imports\ServiceContracts\Membership.SignUpRequest.cs">
       <DependentUpon>ServiceContracts.tt</DependentUpon>
     </Compile>
+    <Compile Include="Imports\ServiceContracts\Northwind.CustomerRepresentativesRow.cs">
+      <DependentUpon>ServiceContracts.tt</DependentUpon>
+    </Compile>
     <Compile Include="Imports\ServiceContracts\Northwind.ProductLogRow.cs">
       <DependentUpon>ServiceContracts.tt</DependentUpon>
     </Compile>
@@ -343,79 +346,129 @@
     <Compile Include="Administration\Role\RoleDialog.cs" />
     <Compile Include="Administration\UserPermission\UserPermissionDialog.cs" />
     <Compile Include="Northwind\Note\NoteDialog.cs" />
-    <Compile Include="Imports\FormContexts\Accounting.COAForm.cs" />
+    <Compile Include="Imports\FormContexts\Accounting.COAForm.cs">
+      <DependentUpon>FormContexts.tt</DependentUpon>
+    </Compile>
     <Compile Include="Accounting\COA\COAGrid.cs" />
     <Compile Include="Accounting\COA\COADialog.cs" />
-    <Compile Include="Imports\FormContexts\Configuration.CurrencyForm.cs" />
+    <Compile Include="Imports\FormContexts\Configuration.CurrencyForm.cs">
+      <DependentUpon>FormContexts.tt</DependentUpon>
+    </Compile>
     <Compile Include="Configuration\Currency\CurrencyGrid.cs" />
     <Compile Include="Configuration\Currency\CurrencyDialog.cs" />
-    <Compile Include="Imports\FormContexts\Configuration.ItemForm.cs" />
+    <Compile Include="Imports\FormContexts\Configuration.ItemForm.cs">
+      <DependentUpon>FormContexts.tt</DependentUpon>
+    </Compile>
     <Compile Include="Configuration\Item\ItemGrid.cs" />
     <Compile Include="Configuration\Item\ItemDialog.cs" />
-    <Compile Include="Imports\FormContexts\Configuration.ItemTaxForm.cs" />
+    <Compile Include="Imports\FormContexts\Configuration.ItemTaxForm.cs">
+      <DependentUpon>FormContexts.tt</DependentUpon>
+    </Compile>
     <Compile Include="Configuration\ItemTax\ItemTaxGrid.cs" />
     <Compile Include="Configuration\ItemTax\ItemTaxDialog.cs" />
-    <Compile Include="Imports\FormContexts\Configuration.OrganogramForm.cs" />
+    <Compile Include="Imports\FormContexts\Configuration.OrganogramForm.cs">
+      <DependentUpon>FormContexts.tt</DependentUpon>
+    </Compile>
     <Compile Include="Configuration\Organogram\OrganogramGrid.cs" />
     <Compile Include="Configuration\Organogram\OrganogramDialog.cs" />
-    <Compile Include="Imports\FormContexts\Configuration.PaymentMethodForm.cs" />
+    <Compile Include="Imports\FormContexts\Configuration.PaymentMethodForm.cs">
+      <DependentUpon>FormContexts.tt</DependentUpon>
+    </Compile>
     <Compile Include="Configuration\PaymentMethod\PaymentMethodGrid.cs" />
     <Compile Include="Configuration\PaymentMethod\PaymentMethodDialog.cs" />
-    <Compile Include="Imports\FormContexts\Configuration.ProjectForm.cs" />
+    <Compile Include="Imports\FormContexts\Configuration.ProjectForm.cs">
+      <DependentUpon>FormContexts.tt</DependentUpon>
+    </Compile>
     <Compile Include="Configuration\Project\ProjectGrid.cs" />
     <Compile Include="Configuration\Project\ProjectDialog.cs" />
-    <Compile Include="Imports\FormContexts\Configuration.TaxForm.cs" />
+    <Compile Include="Imports\FormContexts\Configuration.TaxForm.cs">
+      <DependentUpon>FormContexts.tt</DependentUpon>
+    </Compile>
     <Compile Include="Configuration\Tax\TaxGrid.cs" />
     <Compile Include="Configuration\Tax\TaxDialog.cs" />
-    <Compile Include="Imports\FormContexts\Configuration.UomForm.cs" />
+    <Compile Include="Imports\FormContexts\Configuration.UomForm.cs">
+      <DependentUpon>FormContexts.tt</DependentUpon>
+    </Compile>
     <Compile Include="Configuration\Uom\UomGrid.cs" />
     <Compile Include="Configuration\Uom\UomDialog.cs" />
-    <Compile Include="Imports\FormContexts\HR.EmployeeForm.cs" />
+    <Compile Include="Imports\FormContexts\HR.EmployeeForm.cs">
+      <DependentUpon>FormContexts.tt</DependentUpon>
+    </Compile>
     <Compile Include="HR\Employee\EmployeeGrid.cs" />
     <Compile Include="HR\Employee\EmployeeDialog.cs" />
-    <Compile Include="Imports\FormContexts\Inventory.StockForm.cs" />
+    <Compile Include="Imports\FormContexts\Inventory.StockForm.cs">
+      <DependentUpon>FormContexts.tt</DependentUpon>
+    </Compile>
     <Compile Include="Inventory\Stock\StockGrid.cs" />
     <Compile Include="Inventory\Stock\StockDialog.cs" />
-    <Compile Include="Imports\FormContexts\Configuration.BrandForm.cs" />
+    <Compile Include="Imports\FormContexts\Configuration.BrandForm.cs">
+      <DependentUpon>FormContexts.tt</DependentUpon>
+    </Compile>
     <Compile Include="Configuration\Brand\BrandGrid.cs" />
     <Compile Include="Configuration\Brand\BrandDialog.cs" />
-    <Compile Include="Imports\FormContexts\Configuration.ColorForm.cs" />
+    <Compile Include="Imports\FormContexts\Configuration.ColorForm.cs">
+      <DependentUpon>FormContexts.tt</DependentUpon>
+    </Compile>
     <Compile Include="Configuration\Color\ColorGrid.cs" />
     <Compile Include="Configuration\Color\ColorDialog.cs" />
-    <Compile Include="Imports\FormContexts\Configuration.GenericItemForm.cs" />
+    <Compile Include="Imports\FormContexts\Configuration.GenericItemForm.cs">
+      <DependentUpon>FormContexts.tt</DependentUpon>
+    </Compile>
     <Compile Include="Configuration\GenericItem\GenericItemGrid.cs" />
     <Compile Include="Configuration\GenericItem\GenericItemDialog.cs" />
-    <Compile Include="Imports\FormContexts\Configuration.ItemCategoryForm.cs" />
+    <Compile Include="Imports\FormContexts\Configuration.ItemCategoryForm.cs">
+      <DependentUpon>FormContexts.tt</DependentUpon>
+    </Compile>
     <Compile Include="Configuration\ItemCategory\ItemCategoryGrid.cs" />
     <Compile Include="Configuration\ItemCategory\ItemCategoryDialog.cs" />
-    <Compile Include="Imports\FormContexts\Configuration.ModelForm.cs" />
+    <Compile Include="Imports\FormContexts\Configuration.ModelForm.cs">
+      <DependentUpon>FormContexts.tt</DependentUpon>
+    </Compile>
     <Compile Include="Configuration\Model\ModelGrid.cs" />
     <Compile Include="Configuration\Model\ModelDialog.cs" />
-    <Compile Include="Imports\FormContexts\Configuration.SizeForm.cs" />
+    <Compile Include="Imports\FormContexts\Configuration.SizeForm.cs">
+      <DependentUpon>FormContexts.tt</DependentUpon>
+    </Compile>
     <Compile Include="Configuration\Size\SizeGrid.cs" />
     <Compile Include="Configuration\Size\SizeDialog.cs" />
-    <Compile Include="Imports\FormContexts\Configuration.SpecificationForm.cs" />
+    <Compile Include="Imports\FormContexts\Configuration.SpecificationForm.cs">
+      <DependentUpon>FormContexts.tt</DependentUpon>
+    </Compile>
     <Compile Include="Configuration\Specification\SpecificationGrid.cs" />
     <Compile Include="Configuration\Specification\SpecificationDialog.cs" />
-    <Compile Include="Imports\FormContexts\Configuration.StyleForm.cs" />
+    <Compile Include="Imports\FormContexts\Configuration.StyleForm.cs">
+      <DependentUpon>FormContexts.tt</DependentUpon>
+    </Compile>
     <Compile Include="Configuration\Style\StyleGrid.cs" />
     <Compile Include="Configuration\Style\StyleDialog.cs" />
-    <Compile Include="Imports\FormContexts\Purchase.SupplierForm.cs" />
+    <Compile Include="Imports\FormContexts\Purchase.SupplierForm.cs">
+      <DependentUpon>FormContexts.tt</DependentUpon>
+    </Compile>
     <Compile Include="Purchase\Supplier\SupplierGrid.cs" />
     <Compile Include="Purchase\Supplier\SupplierDialog.cs" />
-    <Compile Include="Imports\FormContexts\Sales.CustomerForm.cs" />
+    <Compile Include="Imports\FormContexts\Sales.CustomerForm.cs">
+      <DependentUpon>FormContexts.tt</DependentUpon>
+    </Compile>
     <Compile Include="Sales\Customer\CustomerGrid.cs" />
     <Compile Include="Sales\Customer\CustomerDialog.cs" />
-    <Compile Include="Imports\FormContexts\ItemTransaction.TransForm.cs" />
+    <Compile Include="Imports\FormContexts\ItemTransaction.TransForm.cs">
+      <DependentUpon>FormContexts.tt</DependentUpon>
+    </Compile>
     <Compile Include="ItemTransaction\Trans\TransGrid.cs" />
     <Compile Include="ItemTransaction\Trans\TransDialog.cs" />
-    <Compile Include="Imports\FormContexts\ItemTransaction.TransDetailForm.cs" />
+    <Compile Include="Imports\FormContexts\ItemTransaction.TransDetailForm.cs">
+      <DependentUpon>FormContexts.tt</DependentUpon>
+    </Compile>
     <Compile Include="ItemTransaction\TransDetail\TransDetailGrid.cs" />
     <Compile Include="ItemTransaction\TransDetail\TransDetailDialog.cs" />
-    <Compile Include="Imports\FormContexts\ItemTransaction.TransPaymentForm.cs" />
+    <Compile Include="Imports\FormContexts\ItemTransaction.TransPaymentForm.cs">
+      <DependentUpon>FormContexts.tt</DependentUpon>
+    </Compile>
     <Compile Include="ItemTransaction\TransPayment\TransPaymentGrid.cs" />
     <Compile Include="ItemTransaction\TransPayment\TransPaymentDialog.cs" />
-    <Compile Include="Imports\FormContexts\ItemTransaction.TransTaxForm.cs" />
+    <Compile Include="Imports\FormContexts\ItemTransaction.TransTaxForm.cs">
+      <DependentUpon>FormContexts.tt</DependentUpon>
+    </Compile>
     <Compile Include="ItemTransaction\TransTax\TransTaxGrid.cs" />
     <Compile Include="ItemTransaction\TransTax\TransTaxDialog.cs" />
   </ItemGroup>

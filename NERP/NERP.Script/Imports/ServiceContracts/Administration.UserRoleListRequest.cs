@@ -14,6 +14,6 @@ namespace NERP.Administration
     {
         public Int32? UserID { get; set; }
     }
-
+    
 }
 

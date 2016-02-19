@@ -13,17 +13,15 @@ namespace NERP.Configuration
     public partial class ItemRow
     {
         [InlineConstant] public const string IdProperty = "Id";
-        [InlineConstant] public const string NameProperty = "Code";
         [InlineConstant] public const string IsActiveProperty = "IsActive";
+        [InlineConstant] public const string NameProperty = "Name";
         [InlineConstant] public const string LocalTextPrefix = "Configuration.Item";
-
-        public Int32? Id { get; set; }
-        public String Code { get; set; }
-        public String Name { get; set; }
-        public String Description { get; set; }
+        [InlineConstant] public const string LookupKey = "Configuration.Item";
+    
+        public static Lookup<ItemRow> Lookup { [InlineCode("Q.getLookup('Configuration.Item')")] get { return null; } }
+    
         public Int32? ItemGroupId { get; set; }
         public Int32? UomId { get; set; }
-        public Int32? ImageId { get; set; }
         public Int32? SpecificationId { get; set; }
         public Int32? ColorId { get; set; }
         public Int32? SizeId { get; set; }
@@ -64,9 +62,24 @@ namespace NERP.Configuration
         public Decimal? Tax5Rate { get; set; }
         public Decimal? DefaultQty { get; set; }
         public String DefaultLocationAtStore { get; set; }
+        public String UomName { get; set; }
+        public String SpecificationName { get; set; }
+        public String ColorName { get; set; }
+        public String SizeName { get; set; }
+        public String ModelName { get; set; }
+        public String StyleName { get; set; }
+        public String BrandName { get; set; }
+        public String CountryName { get; set; }
+        public String SupplierName { get; set; }
+        public Int32? Id { get; set; }
+        public String Code { get; set; }
+        public String Name { get; set; }
+        public String Description { get; set; }
         public String Note { get; set; }
         public Int32? ProjectId { get; set; }
+        public String Project { get; set; }
         public Int32? OrganogramId { get; set; }
+        public String Organogram { get; set; }
         public Int32? ScopeId { get; set; }
         public Int32? CompanyId { get; set; }
         public Int32? StatusId { get; set; }
@@ -76,279 +89,20 @@ namespace NERP.Configuration
         public Int32? DbId { get; set; }
         public Int32? CreatedBy { get; set; }
         public String CreatedOn { get; set; }
-        //public String CreatedPc { get; set; }
+        public String CreatedPc { get; set; }
         public Int32? UpdatedBy { get; set; }
         public String UpdatedOn { get; set; }
-        //public String UpdatedPc { get; set; }
+        public String UpdatedPc { get; set; }
         public Int32? DeletedBy { get; set; }
         public String DeletedOn { get; set; }
-        //public String DeletedPc { get; set; }
+        public String DeletedPc { get; set; }
         public Int16? IsDelete { get; set; }
-        public String UomCode { get; set; }
-        public String UomName { get; set; }
-        public String UomDescription { get; set; }
-        public Int32? UomUomTyepId { get; set; }
-        public Decimal? UomRateToStandard { get; set; }
-        public String UomNote { get; set; }
-        public Int32? UomProjectId { get; set; }
-        public Int32? UomOrganogramId { get; set; }
-        public Int32? UomScopeId { get; set; }
-        public Int32? UomCompanyId { get; set; }
-        public Int32? UomStatusId { get; set; }
-        public String UomActiveOn { get; set; }
-        public String UomInactiveOn { get; set; }
-        public Int16? UomIsActive { get; set; }
-        public Int32? UomDbId { get; set; }
-        public Int32? UomCreatedBy { get; set; }
-        public String UomCreatedOn { get; set; }
-        public String UomCreatedPc { get; set; }
-        public Int32? UomUpdatedBy { get; set; }
-        public String UomUpdatedOn { get; set; }
-        public String UomUpdatedPc { get; set; }
-        public Int32? UomDeletedBy { get; set; }
-        public String UomDeletedOn { get; set; }
-        public String UomDeletedPc { get; set; }
-        public Int16? UomIsDelete { get; set; }
-        public String ImageCode { get; set; }
-        public String ImageName { get; set; }
-        public String ImageDescription { get; set; }
-        public Int32? ImageImageTypeId { get; set; }
-        public String ImagePath { get; set; }
-        public Decimal? ImageSizeKb { get; set; }
-        public Decimal? ImageWidePixel { get; set; }
-        public Decimal? ImageHeightPixel { get; set; }
-        public String ImageNote { get; set; }
-        public Int32? ImageProjectId { get; set; }
-        public Int32? ImageOrganogramId { get; set; }
-        public Int32? ImageScopeId { get; set; }
-        public Int32? ImageCompanyId { get; set; }
-        public Int32? ImageStatusId { get; set; }
-        public String ImageActiveOn { get; set; }
-        public String ImageInactiveOn { get; set; }
-        public Int16? ImageIsActive { get; set; }
-        public Int32? ImageDbId { get; set; }
-        public Int32? ImageCreatedBy { get; set; }
-        public String ImageCreatedOn { get; set; }
-        public String ImageCreatedPc { get; set; }
-        public Int32? ImageUpdatedBy { get; set; }
-        public String ImageUpdatedOn { get; set; }
-        public String ImageUpdatedPc { get; set; }
-        public Int32? ImageDeletedBy { get; set; }
-        public String ImageDeletedOn { get; set; }
-        public String ImageDeletedPc { get; set; }
-        public Int16? ImageIsDelete { get; set; }
-        public String SpecificationCode { get; set; }
-        public String SpecificationName { get; set; }
-        public String SpecificationDescription { get; set; }
-        public String SpecificationNote { get; set; }
-        public Int32? SpecificationProjectId { get; set; }
-        public Int32? SpecificationOrganogramId { get; set; }
-        public Int32? SpecificationScopeId { get; set; }
-        public Int32? SpecificationCompanyId { get; set; }
-        public Int32? SpecificationStatusId { get; set; }
-        public String SpecificationActiveOn { get; set; }
-        public String SpecificationInactiveOn { get; set; }
-        public Int16? SpecificationIsActive { get; set; }
-        public Int32? SpecificationDbId { get; set; }
-        public Int32? SpecificationCreatedBy { get; set; }
-        public String SpecificationCreatedOn { get; set; }
-        public String SpecificationCreatedPc { get; set; }
-        public Int32? SpecificationUpdatedBy { get; set; }
-        public String SpecificationUpdatedOn { get; set; }
-        public String SpecificationUpdatedPc { get; set; }
-        public Int32? SpecificationDeletedBy { get; set; }
-        public String SpecificationDeletedOn { get; set; }
-        public String SpecificationDeletedPc { get; set; }
-        public Int16? SpecificationIsDelete { get; set; }
-        public String ColorCode { get; set; }
-        public String ColorName { get; set; }
-        public String ColorDescription { get; set; }
-        public String ColorHexValue { get; set; }
-        public String ColorNote { get; set; }
-        public Int32? ColorProjectId { get; set; }
-        public Int32? ColorOrganogramId { get; set; }
-        public Int32? ColorScopeId { get; set; }
-        public Int32? ColorCompanyId { get; set; }
-        public Int32? ColorStatusId { get; set; }
-        public String ColorActiveOn { get; set; }
-        public String ColorInactiveOn { get; set; }
-        public Int16? ColorIsActive { get; set; }
-        public Int32? ColorDbId { get; set; }
-        public Int32? ColorCreatedBy { get; set; }
-        public String ColorCreatedOn { get; set; }
-        public String ColorCreatedPc { get; set; }
-        public Int32? ColorUpdatedBy { get; set; }
-        public String ColorUpdatedOn { get; set; }
-        public String ColorUpdatedPc { get; set; }
-        public Int32? ColorDeletedBy { get; set; }
-        public String ColorDeletedOn { get; set; }
-        public String ColorDeletedPc { get; set; }
-        public Int16? ColorIsDelete { get; set; }
-        public String SizeCode { get; set; }
-        public String SizeName { get; set; }
-        public String SizeDescription { get; set; }
-        public String SizeNote { get; set; }
-        public Int32? SizeProjectId { get; set; }
-        public Int32? SizeOrganogramId { get; set; }
-        public Int32? SizeScopeId { get; set; }
-        public Int32? SizeCompanyId { get; set; }
-        public Int32? SizeStatusId { get; set; }
-        public String SizeActiveOn { get; set; }
-        public String SizeInactiveOn { get; set; }
-        public Int16? SizeIsActive { get; set; }
-        public Int32? SizeDbId { get; set; }
-        public Int32? SizeCreatedBy { get; set; }
-        public String SizeCreatedOn { get; set; }
-        public String SizeCreatedPc { get; set; }
-        public Int32? SizeUpdatedBy { get; set; }
-        public String SizeUpdatedOn { get; set; }
-        public String SizeUpdatedPc { get; set; }
-        public Int32? SizeDeletedBy { get; set; }
-        public String SizeDeletedOn { get; set; }
-        public String SizeDeletedPc { get; set; }
-        public Int16? SizeIsDelete { get; set; }
-        public String ModelCode { get; set; }
-        public String ModelName { get; set; }
-        public String ModelDescription { get; set; }
-        public String ModelNote { get; set; }
-        public Int32? ModelProjectId { get; set; }
-        public Int32? ModelOrganogramId { get; set; }
-        public Int32? ModelScopeId { get; set; }
-        public Int32? ModelCompanyId { get; set; }
-        public Int32? ModelStatusId { get; set; }
-        public String ModelActiveOn { get; set; }
-        public String ModelInactiveOn { get; set; }
-        public Int16? ModelIsActive { get; set; }
-        public Int32? ModelDbId { get; set; }
-        public Int32? ModelCreatedBy { get; set; }
-        public String ModelCreatedOn { get; set; }
-        public String ModelCreatedPc { get; set; }
-        public Int32? ModelUpdatedBy { get; set; }
-        public String ModelUpdatedOn { get; set; }
-        public String ModelUpdatedPc { get; set; }
-        public Int32? ModelDeletedBy { get; set; }
-        public String ModelDeletedOn { get; set; }
-        public String ModelDeletedPc { get; set; }
-        public Int16? ModelIsDelete { get; set; }
-        public String StyleCode { get; set; }
-        public String StyleName { get; set; }
-        public String StyleDescription { get; set; }
-        public String StyleNote { get; set; }
-        public Int32? StyleProjectId { get; set; }
-        public Int32? StyleOrganogramId { get; set; }
-        public Int32? StyleScopeId { get; set; }
-        public Int32? StyleCompanyId { get; set; }
-        public Int32? StyleStatusId { get; set; }
-        public String StyleActiveOn { get; set; }
-        public String StyleInactiveOn { get; set; }
-        public Int16? StyleIsActive { get; set; }
-        public Int32? StyleDbId { get; set; }
-        public Int32? StyleCreatedBy { get; set; }
-        public String StyleCreatedOn { get; set; }
-        public String StyleCreatedPc { get; set; }
-        public Int32? StyleUpdatedBy { get; set; }
-        public String StyleUpdatedOn { get; set; }
-        public String StyleUpdatedPc { get; set; }
-        public Int32? StyleDeletedBy { get; set; }
-        public String StyleDeletedOn { get; set; }
-        public String StyleDeletedPc { get; set; }
-        public Int16? StyleIsDelete { get; set; }
-        public String BrandCode { get; set; }
-        public String BrandName { get; set; }
-        public String BrandDescription { get; set; }
-        public String BrandNote { get; set; }
-        public Int32? BrandProjectId { get; set; }
-        public Int32? BrandOrganogramId { get; set; }
-        public Int32? BrandScopeId { get; set; }
-        public Int32? BrandCompanyId { get; set; }
-        public Int32? BrandStatusId { get; set; }
-        public String BrandActiveOn { get; set; }
-        public String BrandInactiveOn { get; set; }
-        public Int16? BrandIsActive { get; set; }
-        public Int32? BrandDbId { get; set; }
-        public Int32? BrandCreatedBy { get; set; }
-        public String BrandCreatedOn { get; set; }
-        public String BrandCreatedPc { get; set; }
-        public Int32? BrandUpdatedBy { get; set; }
-        public String BrandUpdatedOn { get; set; }
-        public String BrandUpdatedPc { get; set; }
-        public Int32? BrandDeletedBy { get; set; }
-        public String BrandDeletedOn { get; set; }
-        public String BrandDeletedPc { get; set; }
-        public Int16? BrandIsDelete { get; set; }
-        public String CountryCode { get; set; }
-        public String CountryName { get; set; }
-        public String CountryDescription { get; set; }
-        public String CountryNote { get; set; }
-        public Int32? CountryProjectId { get; set; }
-        public Int32? CountryOrganogramId { get; set; }
-        public Int32? CountryScopeId { get; set; }
-        public Int32? CountryCompanyId { get; set; }
-        public Int32? CountryStatusId { get; set; }
-        public String CountryActiveOn { get; set; }
-        public String CountryInactiveOn { get; set; }
-        public Int16? CountryIsActive { get; set; }
-        public Int32? CountryDbId { get; set; }
-        public Int32? CountryCreatedBy { get; set; }
-        public String CountryCreatedOn { get; set; }
-        public String CountryCreatedPc { get; set; }
-        public Int32? CountryUpdatedBy { get; set; }
-        public String CountryUpdatedOn { get; set; }
-        public String CountryUpdatedPc { get; set; }
-        public Int32? CountryDeletedBy { get; set; }
-        public String CountryDeletedOn { get; set; }
-        public String CountryDeletedPc { get; set; }
-        public Int16? CountryIsDelete { get; set; }
-        public String SupplierCode { get; set; }
-        public String SupplierName { get; set; }
-        public String SupplierDescription { get; set; }
-        public Int32? SupplierUserTypeId { get; set; }
-        public Int32? SupplierUserGroupId { get; set; }
-        public String SupplierFirstName { get; set; }
-        public String SupplierMiddleName { get; set; }
-        public String SupplierLastName { get; set; }
-        public String SupplierFullName { get; set; }
-        public Int32? SupplierImageId { get; set; }
-        public String SupplierAddress1 { get; set; }
-        public String SupplierAddress2 { get; set; }
-        public String SupplierMobile { get; set; }
-        public String SupplierEmail { get; set; }
-        public String SupplierDateOfBirth { get; set; }
-        public String SupplierLoginName { get; set; }
-        public String SupplierPassword { get; set; }
-        public Int16? SupplierIsTaxable { get; set; }
-        public Decimal? SupplierCommissionRate { get; set; }
-        public String SupplierNote { get; set; }
-        public Int32? SupplierProjectId { get; set; }
-        public Int32? SupplierOrganogramId { get; set; }
-        public Int32? SupplierScopeId { get; set; }
-        public Int32? SupplierCompanyId { get; set; }
-        public Int32? SupplierStatusId { get; set; }
-        public String SupplierActiveOn { get; set; }
-        public String SupplierInactiveOn { get; set; }
-        public Int16? SupplierIsActive { get; set; }
-        public Int32? SupplierDbId { get; set; }
-        public Int32? SupplierCreatedBy { get; set; }
-        public String SupplierCreatedOn { get; set; }
-        public String SupplierCreatedPc { get; set; }
-        public Int32? SupplierUpdatedBy { get; set; }
-        public String SupplierUpdatedOn { get; set; }
-        public String SupplierUpdatedPc { get; set; }
-        public Int32? SupplierDeletedBy { get; set; }
-        public String SupplierDeletedOn { get; set; }
-        public String SupplierDeletedPc { get; set; }
-        public Int16? SupplierIsDelete { get; set; }
-
+    
         [Imported, PreserveMemberCase]
         public static class Fields
         {
-            [InlineConstant] public const string Id = "Id";
-            [InlineConstant] public const string Code = "Code";
-            [InlineConstant] public const string Name = "Name";
-            [InlineConstant] public const string Description = "Description";
             [InlineConstant] public const string ItemGroupId = "ItemGroupId";
             [InlineConstant] public const string UomId = "UomId";
-            [InlineConstant] public const string ImageId = "ImageId";
             [InlineConstant] public const string SpecificationId = "SpecificationId";
             [InlineConstant] public const string ColorId = "ColorId";
             [InlineConstant] public const string SizeId = "SizeId";
@@ -389,9 +143,24 @@ namespace NERP.Configuration
             [InlineConstant] public const string Tax5Rate = "Tax5Rate";
             [InlineConstant] public const string DefaultQty = "DefaultQty";
             [InlineConstant] public const string DefaultLocationAtStore = "DefaultLocationAtStore";
+            [InlineConstant] public const string UomName = "UomName";
+            [InlineConstant] public const string SpecificationName = "SpecificationName";
+            [InlineConstant] public const string ColorName = "ColorName";
+            [InlineConstant] public const string SizeName = "SizeName";
+            [InlineConstant] public const string ModelName = "ModelName";
+            [InlineConstant] public const string StyleName = "StyleName";
+            [InlineConstant] public const string BrandName = "BrandName";
+            [InlineConstant] public const string CountryName = "CountryName";
+            [InlineConstant] public const string SupplierName = "SupplierName";
+            [InlineConstant] public const string Id = "Id";
+            [InlineConstant] public const string Code = "Code";
+            [InlineConstant] public const string Name = "Name";
+            [InlineConstant] public const string Description = "Description";
             [InlineConstant] public const string Note = "Note";
             [InlineConstant] public const string ProjectId = "ProjectId";
+            [InlineConstant] public const string Project = "Project";
             [InlineConstant] public const string OrganogramId = "OrganogramId";
+            [InlineConstant] public const string Organogram = "Organogram";
             [InlineConstant] public const string ScopeId = "ScopeId";
             [InlineConstant] public const string CompanyId = "CompanyId";
             [InlineConstant] public const string StatusId = "StatusId";
@@ -409,260 +178,8 @@ namespace NERP.Configuration
             [InlineConstant] public const string DeletedOn = "DeletedOn";
             [InlineConstant] public const string DeletedPc = "DeletedPc";
             [InlineConstant] public const string IsDelete = "IsDelete";
-            [InlineConstant] public const string UomCode = "UomCode";
-            [InlineConstant] public const string UomName = "UomName";
-            [InlineConstant] public const string UomDescription = "UomDescription";
-            [InlineConstant] public const string UomUomTyepId = "UomUomTyepId";
-            [InlineConstant] public const string UomRateToStandard = "UomRateToStandard";
-            [InlineConstant] public const string UomNote = "UomNote";
-            [InlineConstant] public const string UomProjectId = "UomProjectId";
-            [InlineConstant] public const string UomOrganogramId = "UomOrganogramId";
-            [InlineConstant] public const string UomScopeId = "UomScopeId";
-            [InlineConstant] public const string UomCompanyId = "UomCompanyId";
-            [InlineConstant] public const string UomStatusId = "UomStatusId";
-            [InlineConstant] public const string UomActiveOn = "UomActiveOn";
-            [InlineConstant] public const string UomInactiveOn = "UomInactiveOn";
-            [InlineConstant] public const string UomIsActive = "UomIsActive";
-            [InlineConstant] public const string UomDbId = "UomDbId";
-            [InlineConstant] public const string UomCreatedBy = "UomCreatedBy";
-            [InlineConstant] public const string UomCreatedOn = "UomCreatedOn";
-            [InlineConstant] public const string UomCreatedPc = "UomCreatedPc";
-            [InlineConstant] public const string UomUpdatedBy = "UomUpdatedBy";
-            [InlineConstant] public const string UomUpdatedOn = "UomUpdatedOn";
-            [InlineConstant] public const string UomUpdatedPc = "UomUpdatedPc";
-            [InlineConstant] public const string UomDeletedBy = "UomDeletedBy";
-            [InlineConstant] public const string UomDeletedOn = "UomDeletedOn";
-            [InlineConstant] public const string UomDeletedPc = "UomDeletedPc";
-            [InlineConstant] public const string UomIsDelete = "UomIsDelete";
-            [InlineConstant] public const string ImageCode = "ImageCode";
-            [InlineConstant] public const string ImageName = "ImageName";
-            [InlineConstant] public const string ImageDescription = "ImageDescription";
-            [InlineConstant] public const string ImageImageTypeId = "ImageImageTypeId";
-            [InlineConstant] public const string ImagePath = "ImagePath";
-            [InlineConstant] public const string ImageSizeKb = "ImageSizeKb";
-            [InlineConstant] public const string ImageWidePixel = "ImageWidePixel";
-            [InlineConstant] public const string ImageHeightPixel = "ImageHeightPixel";
-            [InlineConstant] public const string ImageNote = "ImageNote";
-            [InlineConstant] public const string ImageProjectId = "ImageProjectId";
-            [InlineConstant] public const string ImageOrganogramId = "ImageOrganogramId";
-            [InlineConstant] public const string ImageScopeId = "ImageScopeId";
-            [InlineConstant] public const string ImageCompanyId = "ImageCompanyId";
-            [InlineConstant] public const string ImageStatusId = "ImageStatusId";
-            [InlineConstant] public const string ImageActiveOn = "ImageActiveOn";
-            [InlineConstant] public const string ImageInactiveOn = "ImageInactiveOn";
-            [InlineConstant] public const string ImageIsActive = "ImageIsActive";
-            [InlineConstant] public const string ImageDbId = "ImageDbId";
-            [InlineConstant] public const string ImageCreatedBy = "ImageCreatedBy";
-            [InlineConstant] public const string ImageCreatedOn = "ImageCreatedOn";
-            [InlineConstant] public const string ImageCreatedPc = "ImageCreatedPc";
-            [InlineConstant] public const string ImageUpdatedBy = "ImageUpdatedBy";
-            [InlineConstant] public const string ImageUpdatedOn = "ImageUpdatedOn";
-            [InlineConstant] public const string ImageUpdatedPc = "ImageUpdatedPc";
-            [InlineConstant] public const string ImageDeletedBy = "ImageDeletedBy";
-            [InlineConstant] public const string ImageDeletedOn = "ImageDeletedOn";
-            [InlineConstant] public const string ImageDeletedPc = "ImageDeletedPc";
-            [InlineConstant] public const string ImageIsDelete = "ImageIsDelete";
-            [InlineConstant] public const string SpecificationCode = "SpecificationCode";
-            [InlineConstant] public const string SpecificationName = "SpecificationName";
-            [InlineConstant] public const string SpecificationDescription = "SpecificationDescription";
-            [InlineConstant] public const string SpecificationNote = "SpecificationNote";
-            [InlineConstant] public const string SpecificationProjectId = "SpecificationProjectId";
-            [InlineConstant] public const string SpecificationOrganogramId = "SpecificationOrganogramId";
-            [InlineConstant] public const string SpecificationScopeId = "SpecificationScopeId";
-            [InlineConstant] public const string SpecificationCompanyId = "SpecificationCompanyId";
-            [InlineConstant] public const string SpecificationStatusId = "SpecificationStatusId";
-            [InlineConstant] public const string SpecificationActiveOn = "SpecificationActiveOn";
-            [InlineConstant] public const string SpecificationInactiveOn = "SpecificationInactiveOn";
-            [InlineConstant] public const string SpecificationIsActive = "SpecificationIsActive";
-            [InlineConstant] public const string SpecificationDbId = "SpecificationDbId";
-            [InlineConstant] public const string SpecificationCreatedBy = "SpecificationCreatedBy";
-            [InlineConstant] public const string SpecificationCreatedOn = "SpecificationCreatedOn";
-            [InlineConstant] public const string SpecificationCreatedPc = "SpecificationCreatedPc";
-            [InlineConstant] public const string SpecificationUpdatedBy = "SpecificationUpdatedBy";
-            [InlineConstant] public const string SpecificationUpdatedOn = "SpecificationUpdatedOn";
-            [InlineConstant] public const string SpecificationUpdatedPc = "SpecificationUpdatedPc";
-            [InlineConstant] public const string SpecificationDeletedBy = "SpecificationDeletedBy";
-            [InlineConstant] public const string SpecificationDeletedOn = "SpecificationDeletedOn";
-            [InlineConstant] public const string SpecificationDeletedPc = "SpecificationDeletedPc";
-            [InlineConstant] public const string SpecificationIsDelete = "SpecificationIsDelete";
-            [InlineConstant] public const string ColorCode = "ColorCode";
-            [InlineConstant] public const string ColorName = "ColorName";
-            [InlineConstant] public const string ColorDescription = "ColorDescription";
-            [InlineConstant] public const string ColorHexValue = "ColorHexValue";
-            [InlineConstant] public const string ColorNote = "ColorNote";
-            [InlineConstant] public const string ColorProjectId = "ColorProjectId";
-            [InlineConstant] public const string ColorOrganogramId = "ColorOrganogramId";
-            [InlineConstant] public const string ColorScopeId = "ColorScopeId";
-            [InlineConstant] public const string ColorCompanyId = "ColorCompanyId";
-            [InlineConstant] public const string ColorStatusId = "ColorStatusId";
-            [InlineConstant] public const string ColorActiveOn = "ColorActiveOn";
-            [InlineConstant] public const string ColorInactiveOn = "ColorInactiveOn";
-            [InlineConstant] public const string ColorIsActive = "ColorIsActive";
-            [InlineConstant] public const string ColorDbId = "ColorDbId";
-            [InlineConstant] public const string ColorCreatedBy = "ColorCreatedBy";
-            [InlineConstant] public const string ColorCreatedOn = "ColorCreatedOn";
-            [InlineConstant] public const string ColorCreatedPc = "ColorCreatedPc";
-            [InlineConstant] public const string ColorUpdatedBy = "ColorUpdatedBy";
-            [InlineConstant] public const string ColorUpdatedOn = "ColorUpdatedOn";
-            [InlineConstant] public const string ColorUpdatedPc = "ColorUpdatedPc";
-            [InlineConstant] public const string ColorDeletedBy = "ColorDeletedBy";
-            [InlineConstant] public const string ColorDeletedOn = "ColorDeletedOn";
-            [InlineConstant] public const string ColorDeletedPc = "ColorDeletedPc";
-            [InlineConstant] public const string ColorIsDelete = "ColorIsDelete";
-            [InlineConstant] public const string SizeCode = "SizeCode";
-            [InlineConstant] public const string SizeName = "SizeName";
-            [InlineConstant] public const string SizeDescription = "SizeDescription";
-            [InlineConstant] public const string SizeNote = "SizeNote";
-            [InlineConstant] public const string SizeProjectId = "SizeProjectId";
-            [InlineConstant] public const string SizeOrganogramId = "SizeOrganogramId";
-            [InlineConstant] public const string SizeScopeId = "SizeScopeId";
-            [InlineConstant] public const string SizeCompanyId = "SizeCompanyId";
-            [InlineConstant] public const string SizeStatusId = "SizeStatusId";
-            [InlineConstant] public const string SizeActiveOn = "SizeActiveOn";
-            [InlineConstant] public const string SizeInactiveOn = "SizeInactiveOn";
-            [InlineConstant] public const string SizeIsActive = "SizeIsActive";
-            [InlineConstant] public const string SizeDbId = "SizeDbId";
-            [InlineConstant] public const string SizeCreatedBy = "SizeCreatedBy";
-            [InlineConstant] public const string SizeCreatedOn = "SizeCreatedOn";
-            [InlineConstant] public const string SizeCreatedPc = "SizeCreatedPc";
-            [InlineConstant] public const string SizeUpdatedBy = "SizeUpdatedBy";
-            [InlineConstant] public const string SizeUpdatedOn = "SizeUpdatedOn";
-            [InlineConstant] public const string SizeUpdatedPc = "SizeUpdatedPc";
-            [InlineConstant] public const string SizeDeletedBy = "SizeDeletedBy";
-            [InlineConstant] public const string SizeDeletedOn = "SizeDeletedOn";
-            [InlineConstant] public const string SizeDeletedPc = "SizeDeletedPc";
-            [InlineConstant] public const string SizeIsDelete = "SizeIsDelete";
-            [InlineConstant] public const string ModelCode = "ModelCode";
-            [InlineConstant] public const string ModelName = "ModelName";
-            [InlineConstant] public const string ModelDescription = "ModelDescription";
-            [InlineConstant] public const string ModelNote = "ModelNote";
-            [InlineConstant] public const string ModelProjectId = "ModelProjectId";
-            [InlineConstant] public const string ModelOrganogramId = "ModelOrganogramId";
-            [InlineConstant] public const string ModelScopeId = "ModelScopeId";
-            [InlineConstant] public const string ModelCompanyId = "ModelCompanyId";
-            [InlineConstant] public const string ModelStatusId = "ModelStatusId";
-            [InlineConstant] public const string ModelActiveOn = "ModelActiveOn";
-            [InlineConstant] public const string ModelInactiveOn = "ModelInactiveOn";
-            [InlineConstant] public const string ModelIsActive = "ModelIsActive";
-            [InlineConstant] public const string ModelDbId = "ModelDbId";
-            [InlineConstant] public const string ModelCreatedBy = "ModelCreatedBy";
-            [InlineConstant] public const string ModelCreatedOn = "ModelCreatedOn";
-            [InlineConstant] public const string ModelCreatedPc = "ModelCreatedPc";
-            [InlineConstant] public const string ModelUpdatedBy = "ModelUpdatedBy";
-            [InlineConstant] public const string ModelUpdatedOn = "ModelUpdatedOn";
-            [InlineConstant] public const string ModelUpdatedPc = "ModelUpdatedPc";
-            [InlineConstant] public const string ModelDeletedBy = "ModelDeletedBy";
-            [InlineConstant] public const string ModelDeletedOn = "ModelDeletedOn";
-            [InlineConstant] public const string ModelDeletedPc = "ModelDeletedPc";
-            [InlineConstant] public const string ModelIsDelete = "ModelIsDelete";
-            [InlineConstant] public const string StyleCode = "StyleCode";
-            [InlineConstant] public const string StyleName = "StyleName";
-            [InlineConstant] public const string StyleDescription = "StyleDescription";
-            [InlineConstant] public const string StyleNote = "StyleNote";
-            [InlineConstant] public const string StyleProjectId = "StyleProjectId";
-            [InlineConstant] public const string StyleOrganogramId = "StyleOrganogramId";
-            [InlineConstant] public const string StyleScopeId = "StyleScopeId";
-            [InlineConstant] public const string StyleCompanyId = "StyleCompanyId";
-            [InlineConstant] public const string StyleStatusId = "StyleStatusId";
-            [InlineConstant] public const string StyleActiveOn = "StyleActiveOn";
-            [InlineConstant] public const string StyleInactiveOn = "StyleInactiveOn";
-            [InlineConstant] public const string StyleIsActive = "StyleIsActive";
-            [InlineConstant] public const string StyleDbId = "StyleDbId";
-            [InlineConstant] public const string StyleCreatedBy = "StyleCreatedBy";
-            [InlineConstant] public const string StyleCreatedOn = "StyleCreatedOn";
-            [InlineConstant] public const string StyleCreatedPc = "StyleCreatedPc";
-            [InlineConstant] public const string StyleUpdatedBy = "StyleUpdatedBy";
-            [InlineConstant] public const string StyleUpdatedOn = "StyleUpdatedOn";
-            [InlineConstant] public const string StyleUpdatedPc = "StyleUpdatedPc";
-            [InlineConstant] public const string StyleDeletedBy = "StyleDeletedBy";
-            [InlineConstant] public const string StyleDeletedOn = "StyleDeletedOn";
-            [InlineConstant] public const string StyleDeletedPc = "StyleDeletedPc";
-            [InlineConstant] public const string StyleIsDelete = "StyleIsDelete";
-            [InlineConstant] public const string BrandCode = "BrandCode";
-            [InlineConstant] public const string BrandName = "BrandName";
-            [InlineConstant] public const string BrandDescription = "BrandDescription";
-            [InlineConstant] public const string BrandNote = "BrandNote";
-            [InlineConstant] public const string BrandProjectId = "BrandProjectId";
-            [InlineConstant] public const string BrandOrganogramId = "BrandOrganogramId";
-            [InlineConstant] public const string BrandScopeId = "BrandScopeId";
-            [InlineConstant] public const string BrandCompanyId = "BrandCompanyId";
-            [InlineConstant] public const string BrandStatusId = "BrandStatusId";
-            [InlineConstant] public const string BrandActiveOn = "BrandActiveOn";
-            [InlineConstant] public const string BrandInactiveOn = "BrandInactiveOn";
-            [InlineConstant] public const string BrandIsActive = "BrandIsActive";
-            [InlineConstant] public const string BrandDbId = "BrandDbId";
-            [InlineConstant] public const string BrandCreatedBy = "BrandCreatedBy";
-            [InlineConstant] public const string BrandCreatedOn = "BrandCreatedOn";
-            [InlineConstant] public const string BrandCreatedPc = "BrandCreatedPc";
-            [InlineConstant] public const string BrandUpdatedBy = "BrandUpdatedBy";
-            [InlineConstant] public const string BrandUpdatedOn = "BrandUpdatedOn";
-            [InlineConstant] public const string BrandUpdatedPc = "BrandUpdatedPc";
-            [InlineConstant] public const string BrandDeletedBy = "BrandDeletedBy";
-            [InlineConstant] public const string BrandDeletedOn = "BrandDeletedOn";
-            [InlineConstant] public const string BrandDeletedPc = "BrandDeletedPc";
-            [InlineConstant] public const string BrandIsDelete = "BrandIsDelete";
-            [InlineConstant] public const string CountryCode = "CountryCode";
-            [InlineConstant] public const string CountryName = "CountryName";
-            [InlineConstant] public const string CountryDescription = "CountryDescription";
-            [InlineConstant] public const string CountryNote = "CountryNote";
-            [InlineConstant] public const string CountryProjectId = "CountryProjectId";
-            [InlineConstant] public const string CountryOrganogramId = "CountryOrganogramId";
-            [InlineConstant] public const string CountryScopeId = "CountryScopeId";
-            [InlineConstant] public const string CountryCompanyId = "CountryCompanyId";
-            [InlineConstant] public const string CountryStatusId = "CountryStatusId";
-            [InlineConstant] public const string CountryActiveOn = "CountryActiveOn";
-            [InlineConstant] public const string CountryInactiveOn = "CountryInactiveOn";
-            [InlineConstant] public const string CountryIsActive = "CountryIsActive";
-            [InlineConstant] public const string CountryDbId = "CountryDbId";
-            [InlineConstant] public const string CountryCreatedBy = "CountryCreatedBy";
-            [InlineConstant] public const string CountryCreatedOn = "CountryCreatedOn";
-            [InlineConstant] public const string CountryCreatedPc = "CountryCreatedPc";
-            [InlineConstant] public const string CountryUpdatedBy = "CountryUpdatedBy";
-            [InlineConstant] public const string CountryUpdatedOn = "CountryUpdatedOn";
-            [InlineConstant] public const string CountryUpdatedPc = "CountryUpdatedPc";
-            [InlineConstant] public const string CountryDeletedBy = "CountryDeletedBy";
-            [InlineConstant] public const string CountryDeletedOn = "CountryDeletedOn";
-            [InlineConstant] public const string CountryDeletedPc = "CountryDeletedPc";
-            [InlineConstant] public const string CountryIsDelete = "CountryIsDelete";
-            [InlineConstant] public const string SupplierCode = "SupplierCode";
-            [InlineConstant] public const string SupplierName = "SupplierName";
-            [InlineConstant] public const string SupplierDescription = "SupplierDescription";
-            [InlineConstant] public const string SupplierUserTypeId = "SupplierUserTypeId";
-            [InlineConstant] public const string SupplierUserGroupId = "SupplierUserGroupId";
-            [InlineConstant] public const string SupplierFirstName = "SupplierFirstName";
-            [InlineConstant] public const string SupplierMiddleName = "SupplierMiddleName";
-            [InlineConstant] public const string SupplierLastName = "SupplierLastName";
-            [InlineConstant] public const string SupplierFullName = "SupplierFullName";
-            [InlineConstant] public const string SupplierImageId = "SupplierImageId";
-            [InlineConstant] public const string SupplierAddress1 = "SupplierAddress1";
-            [InlineConstant] public const string SupplierAddress2 = "SupplierAddress2";
-            [InlineConstant] public const string SupplierMobile = "SupplierMobile";
-            [InlineConstant] public const string SupplierEmail = "SupplierEmail";
-            [InlineConstant] public const string SupplierDateOfBirth = "SupplierDateOfBirth";
-            [InlineConstant] public const string SupplierLoginName = "SupplierLoginName";
-            [InlineConstant] public const string SupplierPassword = "SupplierPassword";
-            [InlineConstant] public const string SupplierIsTaxable = "SupplierIsTaxable";
-            [InlineConstant] public const string SupplierCommissionRate = "SupplierCommissionRate";
-            [InlineConstant] public const string SupplierNote = "SupplierNote";
-            [InlineConstant] public const string SupplierProjectId = "SupplierProjectId";
-            [InlineConstant] public const string SupplierOrganogramId = "SupplierOrganogramId";
-            [InlineConstant] public const string SupplierScopeId = "SupplierScopeId";
-            [InlineConstant] public const string SupplierCompanyId = "SupplierCompanyId";
-            [InlineConstant] public const string SupplierStatusId = "SupplierStatusId";
-            [InlineConstant] public const string SupplierActiveOn = "SupplierActiveOn";
-            [InlineConstant] public const string SupplierInactiveOn = "SupplierInactiveOn";
-            [InlineConstant] public const string SupplierIsActive = "SupplierIsActive";
-            [InlineConstant] public const string SupplierDbId = "SupplierDbId";
-            [InlineConstant] public const string SupplierCreatedBy = "SupplierCreatedBy";
-            [InlineConstant] public const string SupplierCreatedOn = "SupplierCreatedOn";
-            [InlineConstant] public const string SupplierCreatedPc = "SupplierCreatedPc";
-            [InlineConstant] public const string SupplierUpdatedBy = "SupplierUpdatedBy";
-            [InlineConstant] public const string SupplierUpdatedOn = "SupplierUpdatedOn";
-            [InlineConstant] public const string SupplierUpdatedPc = "SupplierUpdatedPc";
-            [InlineConstant] public const string SupplierDeletedBy = "SupplierDeletedBy";
-            [InlineConstant] public const string SupplierDeletedOn = "SupplierDeletedOn";
-            [InlineConstant] public const string SupplierDeletedPc = "SupplierDeletedPc";
-            [InlineConstant] public const string SupplierIsDelete = "SupplierIsDelete";
         }
     }
+    
 }
+

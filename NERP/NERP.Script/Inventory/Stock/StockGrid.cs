@@ -7,7 +7,7 @@ namespace NERP.Inventory
     using System.Collections.Generic;
     using System.Runtime.CompilerServices;
 
-    [ColumnsKey("Inventory.Stock"), IdProperty(StockRow.IdProperty), NameProperty(StockRow.NameProperty), IsActiveProperty(StockRow.IsActiveProperty)]
+    [ColumnsKey("Inventory.Stock"), IdProperty(StockRow.IdProperty), NameProperty(StockRow.NameProperty)]
     [DialogType(typeof(StockDialog)), LocalTextPrefix(StockRow.LocalTextPrefix), Service(StockService.BaseUrl)]
     public class StockGrid : EntityGrid<StockRow>
     {

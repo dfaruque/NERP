@@ -6,9 +6,7 @@ namespace NERP.ItemTransaction
     using Serenity;
     using System.Collections.Generic;
 
-    [IdProperty(TransDetailRow.IdProperty), NameProperty(TransDetailRow.NameProperty), IsActiveProperty(TransDetailRow.IsActiveProperty)]
-    [FormKey("ItemTransaction.TransDetail"), LocalTextPrefix(TransDetailRow.LocalTextPrefix)]
-    //[Service(TransDetailService.BaseUrl)]
+    [NameProperty("ItemName"),FormKey("ItemTransaction.TransDetail"), LocalTextPrefix("ItemTransaction.TransDetail")]
     public class TransDetailEditDialog : GridEditorDialog<TransDetailRow>
     {
         protected TransDetailForm form;
@@ -16,6 +14,12 @@ namespace NERP.ItemTransaction
         public TransDetailEditDialog()
         {
             form = new TransDetailForm(this.IdPrefix);
+
+            form.Quantity.Change(e =>
+            {
+                form.Amount.Value = form.Quantity.Value * form.UnitPrice.Value;
+            });
+
         }
 
     }

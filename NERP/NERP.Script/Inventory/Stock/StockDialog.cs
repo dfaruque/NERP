@@ -5,7 +5,7 @@ namespace NERP.Inventory
     using Serenity;
     using System.Collections.Generic;
 
-    [IdProperty(StockRow.IdProperty), NameProperty(StockRow.NameProperty), IsActiveProperty(StockRow.IsActiveProperty)]
+    [IdProperty(StockRow.IdProperty), NameProperty(StockRow.NameProperty)]
     [FormKey("Inventory.Stock"), LocalTextPrefix(StockRow.LocalTextPrefix), Service(StockService.BaseUrl)]
     public class StockDialog : EntityDialog<StockRow>
     {

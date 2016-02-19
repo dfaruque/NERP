@@ -43,7 +43,7 @@ using System.IO;
             set { Fields.TaxName[this] = value; }
         }
 
-        [DisplayName("Rate"), Size(18), Scale(6)]
+        [DisplayName("Rate"), Size(18), Scale(Statics.DecimalLength)]
         public Decimal? Rate
         {
             get { return Fields.Rate[this]; }

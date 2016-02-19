@@ -15,6 +15,6 @@ namespace NERP.Northwind
         Male = 1,
         Female = 2
     }
-
+    
 }
 

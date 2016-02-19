@@ -15,6 +15,6 @@ namespace NERP.Northwind
         NotShipped = 0,
         Shipped = 1
     }
-
+    
 }
 

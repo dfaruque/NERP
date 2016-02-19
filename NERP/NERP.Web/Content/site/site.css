@@ -7658,7 +7658,8 @@ section.content > .s-DataGrid {
   width: 215px;
 }
 .s-NoteDialog .s-PropertyGrid .categories {
-  height: 260px;
+  height: auto;
+  padding-bottom: 20px;
 }
 /* ------------------------------------------------------------------------- */
 /* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
@@ -7699,7 +7700,8 @@ section.content > .s-DataGrid {
   width: 215px;
 }
 .s-COADialog .s-PropertyGrid .categories {
-  height: 260px;
+  height: auto;
+  padding-bottom: 20px;
 }
 /* ------------------------------------------------------------------------- */
 /* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
@@ -7740,7 +7742,8 @@ section.content > .s-DataGrid {
   width: 215px;
 }
 .s-CurrencyDialog .s-PropertyGrid .categories {
-  height: 260px;
+  height: auto;
+  padding-bottom: 20px;
 }
 /* ------------------------------------------------------------------------- */
 /* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
@@ -7781,7 +7784,8 @@ section.content > .s-DataGrid {
   width: 215px;
 }
 .s-ItemDialog .s-PropertyGrid .categories {
-  height: 260px;
+  height: auto;
+  padding-bottom: 20px;
 }
 /* ------------------------------------------------------------------------- */
 /* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
@@ -7822,7 +7826,8 @@ section.content > .s-DataGrid {
   width: 215px;
 }
 .s-ItemTaxDialog .s-PropertyGrid .categories {
-  height: 260px;
+  height: auto;
+  padding-bottom: 20px;
 }
 /* ------------------------------------------------------------------------- */
 /* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
@@ -7863,7 +7868,8 @@ section.content > .s-DataGrid {
   width: 215px;
 }
 .s-OrganogramDialog .s-PropertyGrid .categories {
-  height: 260px;
+  height: auto;
+  max-height: 100%;
 }
 /* ------------------------------------------------------------------------- */
 /* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
@@ -7904,7 +7910,8 @@ section.content > .s-DataGrid {
   width: 215px;
 }
 .s-PaymentMethodDialog .s-PropertyGrid .categories {
-  height: 260px;
+  height: auto;
+  padding-bottom: 20px;
 }
 /* ------------------------------------------------------------------------- */
 /* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
@@ -7945,7 +7952,8 @@ section.content > .s-DataGrid {
   width: 215px;
 }
 .s-ProjectDialog .s-PropertyGrid .categories {
-  height: 260px;
+  height: auto;
+  padding-bottom: 20px;
 }
 /* ------------------------------------------------------------------------- */
 /* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
@@ -7986,7 +7994,8 @@ section.content > .s-DataGrid {
   width: 215px;
 }
 .s-TaxDialog .s-PropertyGrid .categories {
-  height: 260px;
+  height: auto;
+  padding-bottom: 20px;
 }
 /* ------------------------------------------------------------------------- */
 /* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
@@ -8027,7 +8036,8 @@ section.content > .s-DataGrid {
   width: 215px;
 }
 .s-UomDialog .s-PropertyGrid .categories {
-  height: 260px;
+  height: auto;
+  padding-bottom: 20px;
 }
 /* ------------------------------------------------------------------------- */
 /* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
@@ -8068,7 +8078,8 @@ section.content > .s-DataGrid {
   width: 215px;
 }
 .s-EmployeeDialog .s-PropertyGrid .categories {
-  height: 260px;
+  height: auto;
+  padding-bottom: 20px;
 }
 /* ------------------------------------------------------------------------- */
 /* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
@@ -8109,7 +8120,8 @@ section.content > .s-DataGrid {
   width: 215px;
 }
 .s-StockDialog .s-PropertyGrid .categories {
-  height: 260px;
+  height: auto;
+  padding-bottom: 20px;
 }
 /* ------------------------------------------------------------------------- */
 /* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
@@ -8150,7 +8162,8 @@ section.content > .s-DataGrid {
   width: 215px;
 }
 .s-BrandDialog .s-PropertyGrid .categories {
-  height: 260px;
+  height: auto;
+  padding-bottom: 20px;
 }
 /* ------------------------------------------------------------------------- */
 /* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
@@ -8191,7 +8204,8 @@ section.content > .s-DataGrid {
   width: 215px;
 }
 .s-ColorDialog .s-PropertyGrid .categories {
-  height: 260px;
+  height: auto;
+  padding-bottom: 20px;
 }
 /* ------------------------------------------------------------------------- */
 /* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
@@ -8232,7 +8246,8 @@ section.content > .s-DataGrid {
   width: 215px;
 }
 .s-GenericItemDialog .s-PropertyGrid .categories {
-  height: 260px;
+  height: auto;
+  padding-bottom: 20px;
 }
 /* ------------------------------------------------------------------------- */
 /* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
@@ -8273,7 +8288,8 @@ section.content > .s-DataGrid {
   width: 215px;
 }
 .s-ItemCategoryDialog .s-PropertyGrid .categories {
-  height: 260px;
+  height: auto;
+  padding-bottom: 20px;
 }
 /* ------------------------------------------------------------------------- */
 /* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
@@ -8314,7 +8330,8 @@ section.content > .s-DataGrid {
   width: 215px;
 }
 .s-ModelDialog .s-PropertyGrid .categories {
-  height: 260px;
+  height: auto;
+  padding-bottom: 20px;
 }
 /* ------------------------------------------------------------------------- */
 /* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
@@ -8355,7 +8372,8 @@ section.content > .s-DataGrid {
   width: 215px;
 }
 .s-SizeDialog .s-PropertyGrid .categories {
-  height: 260px;
+  height: auto;
+  padding-bottom: 20px;
 }
 /* ------------------------------------------------------------------------- */
 /* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
@@ -8396,7 +8414,8 @@ section.content > .s-DataGrid {
   width: 215px;
 }
 .s-SpecificationDialog .s-PropertyGrid .categories {
-  height: 260px;
+  height: auto;
+  padding-bottom: 20px;
 }
 /* ------------------------------------------------------------------------- */
 /* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
@@ -8437,7 +8456,8 @@ section.content > .s-DataGrid {
   width: 215px;
 }
 .s-StyleDialog .s-PropertyGrid .categories {
-  height: 260px;
+  height: auto;
+  padding-bottom: 20px;
 }
 /* ------------------------------------------------------------------------- */
 /* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
@@ -8478,7 +8498,8 @@ section.content > .s-DataGrid {
   width: 215px;
 }
 .s-SupplierDialog .s-PropertyGrid .categories {
-  height: 260px;
+  height: auto;
+  padding-bottom: 20px;
 }
 /* ------------------------------------------------------------------------- */
 /* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
@@ -8519,7 +8540,8 @@ section.content > .s-DataGrid {
   width: 215px;
 }
 .s-CustomerDialog .s-PropertyGrid .categories {
-  height: 260px;
+  height: auto;
+  padding-bottom: 20px;
 }
 /* ------------------------------------------------------------------------- */
 /* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
@@ -8560,7 +8582,8 @@ section.content > .s-DataGrid {
   width: 215px;
 }
 .s-TransDialog .s-PropertyGrid .categories {
-  height: 260px;
+  height: auto;
+  padding-bottom: 20px;
 }
 /* ------------------------------------------------------------------------- */
 /* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
@@ -8601,7 +8624,8 @@ section.content > .s-DataGrid {
   width: 215px;
 }
 .s-TransDetailDialog .s-PropertyGrid .categories {
-  height: 260px;
+  height: auto;
+  padding-bottom: 20px;
 }
 /* ------------------------------------------------------------------------- */
 /* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
@@ -8642,7 +8666,8 @@ section.content > .s-DataGrid {
   width: 215px;
 }
 .s-TransPaymentDialog .s-PropertyGrid .categories {
-  height: 260px;
+  height: auto;
+  padding-bottom: 20px;
 }
 /* ------------------------------------------------------------------------- */
 /* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
@@ -8683,43 +8708,45 @@ section.content > .s-DataGrid {
   width: 215px;
 }
 .s-TransTaxDialog .s-PropertyGrid .categories {
-  height: 260px;
+  height: auto;
+  padding-bottom: 20px;
 }
 .s-TransDetailEditDialog > .size {
-  min-width: 550px;
-  width: 550px;
+  min-width: 750px;
+  width: 750px;
 }
 .s-TransDetailEditDialog .tab-pane {
   height: auto;
 }
 .s-TransDetailEditDialog .caption {
-  width: 150px;
+  width: 170px;
 }
 .s-TransDetailEditDialog .editor {
-  width: 300px;
+  width: 520px;
 }
 .s-TransDetailEditDialog input.editor[type=checkbox] {
   width: auto;
 }
 .s-TransDetailEditDialog .s-Form .editor.dateQ {
-  width: 276px;
+  width: 496px;
 }
 .s-TransDetailEditDialog .s-Form .editor.emailuser {
   width: 170px;
 }
 .s-TransDetailEditDialog .s-Form .editor.dateQ.s-DateTimeEditor {
-  width: 181px;
+  width: 401px;
 }
 .s-TransDetailEditDialog .s-Form .editor.s-DateTimeEditor.time {
   width: 64px;
   margin-left: 4px;
 }
 .s-TransDetailEditDialog .s-Form .editor.has-inplace-button {
-  width: 274px;
+  width: 494px;
 }
 .s-TransDetailEditDialog .s-Form .emaildomain {
-  width: 115px;
+  width: 335px;
 }
 .s-TransDetailEditDialog .s-PropertyGrid .categories {
-  height: 160px;
+  height: auto;
+  padding-bottom: 20px;
 }

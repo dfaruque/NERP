@@ -346,6 +346,14 @@
 			setEntities: function(items) {
 				this.view.setItems(items, true);
 			},
+			addEntity: function(item) {
+				var id = ss.cast(item.__id, ss.Int32);
+				if (ss.isNullOrUndefined(id)) {
+					item.__id = this.$nextId++;
+				}
+				this.get_items().push(item);
+				this.view.setItems(this.get_items(), true);
+			},
 			getNewEntity: function() {
 				return ss.createInstance(TEntity);
 			},
@@ -979,6 +987,9 @@
 		this.form = null;
 		ss.makeGenericType($NERP_Common_GridEditorDialog$1, [Object]).call(this);
 		this.form = new $NERP_ItemTransaction_TransDetailForm(this.get_idPrefix());
+		Serenity.WX.change(this.form.get_quantity(), ss.mkdel(this, function(e) {
+			this.form.get_amount().set_value(ss.Nullable$1.mul(this.form.get_quantity().get_value(), this.form.get_unitPrice().get_value()));
+		}));
 	};
 	$NERP_ItemTransaction_TransDetailEditDialog.__typeName = 'NERP.ItemTransaction.TransDetailEditDialog';
 	global.NERP.ItemTransaction.TransDetailEditDialog = $NERP_ItemTransaction_TransDetailEditDialog;
@@ -1838,63 +1849,6 @@
 		},
 		get_note: function() {
 			return this.byId(Serenity.StringEditor).call(this, 'Note');
-		},
-		get_projectId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ProjectId');
-		},
-		get_organogramId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'OrganogramId');
-		},
-		get_scopeId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ScopeId');
-		},
-		get_companyId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CompanyId');
-		},
-		get_statusId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'StatusId');
-		},
-		get_activeOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'ActiveOn');
-		},
-		get_inactiveOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'InactiveOn');
-		},
-		get_isActive: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsActive');
-		},
-		get_dbId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DbId');
-		},
-		get_createdBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CreatedBy');
-		},
-		get_createdOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'CreatedOn');
-		},
-		get_createdPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'CreatedPc');
-		},
-		get_updatedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'UpdatedBy');
-		},
-		get_updatedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'UpdatedOn');
-		},
-		get_updatedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'UpdatedPc');
-		},
-		get_deletedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DeletedBy');
-		},
-		get_deletedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'DeletedOn');
-		},
-		get_deletedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'DeletedPc');
-		},
-		get_isDelete: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsDelete');
 		}
 	}, Serenity.PrefixedContext);
 	ss.initClass($NERP_Accounting_COAGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
@@ -2571,63 +2525,6 @@
 		},
 		get_note: function() {
 			return this.byId(Serenity.StringEditor).call(this, 'Note');
-		},
-		get_projectId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ProjectId');
-		},
-		get_organogramId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'OrganogramId');
-		},
-		get_scopeId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ScopeId');
-		},
-		get_companyId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CompanyId');
-		},
-		get_statusId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'StatusId');
-		},
-		get_activeOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'ActiveOn');
-		},
-		get_inactiveOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'InactiveOn');
-		},
-		get_isActive: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsActive');
-		},
-		get_dbId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DbId');
-		},
-		get_createdBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CreatedBy');
-		},
-		get_createdOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'CreatedOn');
-		},
-		get_createdPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'CreatedPc');
-		},
-		get_updatedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'UpdatedBy');
-		},
-		get_updatedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'UpdatedOn');
-		},
-		get_updatedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'UpdatedPc');
-		},
-		get_deletedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DeletedBy');
-		},
-		get_deletedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'DeletedOn');
-		},
-		get_deletedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'DeletedPc');
-		},
-		get_isDelete: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsDelete');
 		}
 	}, Serenity.PrefixedContext);
 	ss.initClass($NERP_Configuration_BrandGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
@@ -2647,63 +2544,6 @@
 		},
 		get_note: function() {
 			return this.byId(Serenity.StringEditor).call(this, 'Note');
-		},
-		get_projectId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ProjectId');
-		},
-		get_organogramId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'OrganogramId');
-		},
-		get_scopeId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ScopeId');
-		},
-		get_companyId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CompanyId');
-		},
-		get_statusId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'StatusId');
-		},
-		get_activeOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'ActiveOn');
-		},
-		get_inactiveOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'InactiveOn');
-		},
-		get_isActive: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsActive');
-		},
-		get_dbId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DbId');
-		},
-		get_createdBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CreatedBy');
-		},
-		get_createdOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'CreatedOn');
-		},
-		get_createdPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'CreatedPc');
-		},
-		get_updatedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'UpdatedBy');
-		},
-		get_updatedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'UpdatedOn');
-		},
-		get_updatedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'UpdatedPc');
-		},
-		get_deletedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DeletedBy');
-		},
-		get_deletedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'DeletedOn');
-		},
-		get_deletedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'DeletedPc');
-		},
-		get_isDelete: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsDelete');
 		}
 	}, Serenity.PrefixedContext);
 	ss.initClass($NERP_Configuration_ColorGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
@@ -2738,63 +2578,6 @@
 		},
 		get_note: function() {
 			return this.byId(Serenity.StringEditor).call(this, 'Note');
-		},
-		get_projectId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ProjectId');
-		},
-		get_organogramId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'OrganogramId');
-		},
-		get_scopeId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ScopeId');
-		},
-		get_companyId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CompanyId');
-		},
-		get_statusId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'StatusId');
-		},
-		get_activeOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'ActiveOn');
-		},
-		get_inactiveOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'InactiveOn');
-		},
-		get_isActive: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsActive');
-		},
-		get_dbId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DbId');
-		},
-		get_createdBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CreatedBy');
-		},
-		get_createdOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'CreatedOn');
-		},
-		get_createdPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'CreatedPc');
-		},
-		get_updatedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'UpdatedBy');
-		},
-		get_updatedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'UpdatedOn');
-		},
-		get_updatedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'UpdatedPc');
-		},
-		get_deletedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DeletedBy');
-		},
-		get_deletedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'DeletedOn');
-		},
-		get_deletedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'DeletedPc');
-		},
-		get_isDelete: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsDelete');
 		}
 	}, Serenity.PrefixedContext);
 	ss.initClass($NERP_Configuration_CurrencyGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
@@ -2810,70 +2593,13 @@
 			return this.byId(Serenity.StringEditor).call(this, 'Description');
 		},
 		get_itemCategoryId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ItemCategoryId');
+			return this.byId(Serenity.LookupEditor).call(this, 'ItemCategoryId');
 		},
 		get_itemTypeId: function() {
 			return this.byId(Serenity.IntegerEditor).call(this, 'ItemTypeId');
 		},
 		get_note: function() {
 			return this.byId(Serenity.StringEditor).call(this, 'Note');
-		},
-		get_projectId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ProjectId');
-		},
-		get_organogramId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'OrganogramId');
-		},
-		get_scopeId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ScopeId');
-		},
-		get_companyId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CompanyId');
-		},
-		get_statusId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'StatusId');
-		},
-		get_activeOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'ActiveOn');
-		},
-		get_inactiveOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'InactiveOn');
-		},
-		get_isActive: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsActive');
-		},
-		get_dbId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DbId');
-		},
-		get_createdBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CreatedBy');
-		},
-		get_createdOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'CreatedOn');
-		},
-		get_createdPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'CreatedPc');
-		},
-		get_updatedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'UpdatedBy');
-		},
-		get_updatedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'UpdatedOn');
-		},
-		get_updatedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'UpdatedPc');
-		},
-		get_deletedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DeletedBy');
-		},
-		get_deletedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'DeletedOn');
-		},
-		get_deletedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'DeletedPc');
-		},
-		get_isDelete: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsDelete');
 		}
 	}, Serenity.PrefixedContext);
 	ss.initClass($NERP_Configuration_GenericItemGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
@@ -2899,67 +2625,10 @@
 			return this.byId(Serenity.StringEditor).call(this, 'Description');
 		},
 		get_parentId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ParentId');
+			return this.byId(Serenity.LookupEditor).call(this, 'ParentId');
 		},
 		get_note: function() {
 			return this.byId(Serenity.StringEditor).call(this, 'Note');
-		},
-		get_projectId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ProjectId');
-		},
-		get_organogramId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'OrganogramId');
-		},
-		get_scopeId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ScopeId');
-		},
-		get_companyId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CompanyId');
-		},
-		get_statusId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'StatusId');
-		},
-		get_activeOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'ActiveOn');
-		},
-		get_inactiveOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'InactiveOn');
-		},
-		get_isActive: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsActive');
-		},
-		get_dbId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DbId');
-		},
-		get_createdBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CreatedBy');
-		},
-		get_createdOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'CreatedOn');
-		},
-		get_createdPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'CreatedPc');
-		},
-		get_updatedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'UpdatedBy');
-		},
-		get_updatedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'UpdatedOn');
-		},
-		get_updatedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'UpdatedPc');
-		},
-		get_deletedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DeletedBy');
-		},
-		get_deletedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'DeletedOn');
-		},
-		get_deletedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'DeletedPc');
-		},
-		get_isDelete: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsDelete');
 		}
 	}, Serenity.PrefixedContext);
 	ss.initClass($NERP_Configuration_ItemCategoryGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
@@ -2978,28 +2647,25 @@
 			return this.byId(Serenity.IntegerEditor).call(this, 'ItemGroupId');
 		},
 		get_uomId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'UomId');
-		},
-		get_imageId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ImageId');
+			return this.byId(Serenity.LookupEditor).call(this, 'UomId');
 		},
 		get_specificationId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'SpecificationId');
+			return this.byId(Serenity.LookupEditor).call(this, 'SpecificationId');
 		},
 		get_colorId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ColorId');
+			return this.byId(Serenity.LookupEditor).call(this, 'ColorId');
 		},
 		get_sizeId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'SizeId');
+			return this.byId(Serenity.LookupEditor).call(this, 'SizeId');
 		},
 		get_modelId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ModelId');
+			return this.byId(Serenity.LookupEditor).call(this, 'ModelId');
 		},
 		get_styleId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'StyleId');
+			return this.byId(Serenity.LookupEditor).call(this, 'StyleId');
 		},
 		get_brandId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'BrandId');
+			return this.byId(Serenity.LookupEditor).call(this, 'BrandId');
 		},
 		get_countryId: function() {
 			return this.byId(Serenity.IntegerEditor).call(this, 'CountryId');
@@ -3105,63 +2771,6 @@
 		},
 		get_note: function() {
 			return this.byId(Serenity.StringEditor).call(this, 'Note');
-		},
-		get_projectId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ProjectId');
-		},
-		get_organogramId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'OrganogramId');
-		},
-		get_scopeId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ScopeId');
-		},
-		get_companyId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CompanyId');
-		},
-		get_statusId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'StatusId');
-		},
-		get_activeOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'ActiveOn');
-		},
-		get_inactiveOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'InactiveOn');
-		},
-		get_isActive: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsActive');
-		},
-		get_dbId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DbId');
-		},
-		get_createdBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CreatedBy');
-		},
-		get_createdOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'CreatedOn');
-		},
-		get_createdPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'CreatedPc');
-		},
-		get_updatedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'UpdatedBy');
-		},
-		get_updatedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'UpdatedOn');
-		},
-		get_updatedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'UpdatedPc');
-		},
-		get_deletedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DeletedBy');
-		},
-		get_deletedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'DeletedOn');
-		},
-		get_deletedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'DeletedPc');
-		},
-		get_isDelete: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsDelete');
 		}
 	}, Serenity.PrefixedContext);
 	ss.initClass($NERP_Configuration_ItemGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
@@ -3187,63 +2796,6 @@
 		},
 		get_note: function() {
 			return this.byId(Serenity.StringEditor).call(this, 'Note');
-		},
-		get_projectId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ProjectId');
-		},
-		get_organogramId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'OrganogramId');
-		},
-		get_scopeId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ScopeId');
-		},
-		get_companyId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CompanyId');
-		},
-		get_statusId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'StatusId');
-		},
-		get_activeOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'ActiveOn');
-		},
-		get_inactiveOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'InactiveOn');
-		},
-		get_isActive: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsActive');
-		},
-		get_dbId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DbId');
-		},
-		get_createdBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CreatedBy');
-		},
-		get_createdOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'CreatedOn');
-		},
-		get_createdPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'CreatedPc');
-		},
-		get_updatedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'UpdatedBy');
-		},
-		get_updatedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'UpdatedOn');
-		},
-		get_updatedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'UpdatedPc');
-		},
-		get_deletedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DeletedBy');
-		},
-		get_deletedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'DeletedOn');
-		},
-		get_deletedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'DeletedPc');
-		},
-		get_isDelete: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsDelete');
 		}
 	}, Serenity.PrefixedContext);
 	ss.initClass($NERP_Configuration_ItemTaxGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
@@ -3260,63 +2812,6 @@
 		},
 		get_note: function() {
 			return this.byId(Serenity.StringEditor).call(this, 'Note');
-		},
-		get_projectId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ProjectId');
-		},
-		get_organogramId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'OrganogramId');
-		},
-		get_scopeId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ScopeId');
-		},
-		get_companyId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CompanyId');
-		},
-		get_statusId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'StatusId');
-		},
-		get_activeOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'ActiveOn');
-		},
-		get_inactiveOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'InactiveOn');
-		},
-		get_isActive: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsActive');
-		},
-		get_dbId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DbId');
-		},
-		get_createdBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CreatedBy');
-		},
-		get_createdOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'CreatedOn');
-		},
-		get_createdPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'CreatedPc');
-		},
-		get_updatedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'UpdatedBy');
-		},
-		get_updatedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'UpdatedOn');
-		},
-		get_updatedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'UpdatedPc');
-		},
-		get_deletedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DeletedBy');
-		},
-		get_deletedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'DeletedOn');
-		},
-		get_deletedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'DeletedPc');
-		},
-		get_isDelete: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsDelete');
 		}
 	}, Serenity.PrefixedContext);
 	ss.initClass($NERP_Configuration_ModelGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
@@ -3332,67 +2827,10 @@
 			return this.byId(Serenity.StringEditor).call(this, 'Description');
 		},
 		get_parentId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ParentId');
+			return this.byId(Serenity.LookupEditor).call(this, 'ParentId');
 		},
 		get_note: function() {
 			return this.byId(Serenity.StringEditor).call(this, 'Note');
-		},
-		get_projectId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ProjectId');
-		},
-		get_organogramId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'OrganogramId');
-		},
-		get_scopeId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ScopeId');
-		},
-		get_companyId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CompanyId');
-		},
-		get_statusId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'StatusId');
-		},
-		get_activeOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'ActiveOn');
-		},
-		get_inactiveOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'InactiveOn');
-		},
-		get_isActive: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsActive');
-		},
-		get_dbId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DbId');
-		},
-		get_createdBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CreatedBy');
-		},
-		get_createdOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'CreatedOn');
-		},
-		get_createdPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'CreatedPc');
-		},
-		get_updatedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'UpdatedBy');
-		},
-		get_updatedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'UpdatedOn');
-		},
-		get_updatedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'UpdatedPc');
-		},
-		get_deletedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DeletedBy');
-		},
-		get_deletedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'DeletedOn');
-		},
-		get_deletedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'DeletedPc');
-		},
-		get_isDelete: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsDelete');
 		}
 	}, Serenity.PrefixedContext);
 	ss.initClass($NERP_Configuration_OrganogramGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
@@ -3412,66 +2850,6 @@
 		},
 		get_note: function() {
 			return this.byId(Serenity.StringEditor).call(this, 'Note');
-		},
-		get_projectId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ProjectId');
-		},
-		get_organogramId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'OrganogramId');
-		},
-		get_scopeId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ScopeId');
-		},
-		get_companyId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CompanyId');
-		},
-		get_statusId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'StatusId');
-		},
-		get_activeOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'ActiveOn');
-		},
-		get_inactiveOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'InactiveOn');
-		},
-		get_isActive: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsActive');
-		},
-		get_dbId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DbId');
-		},
-		get_createdBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CreatedBy');
-		},
-		get_createdOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'CreatedOn');
-		},
-		get_createdPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'CreatedPc');
-		},
-		get_updatedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'UpdatedBy');
-		},
-		get_updatedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'UpdatedOn');
-		},
-		get_updatedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'UpdatedPc');
-		},
-		get_deletedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DeletedBy');
-		},
-		get_deletedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'DeletedOn');
-		},
-		get_deletedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'DeletedPc');
-		},
-		get_isDelete: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsDelete');
-		},
-		get_paymentMethodId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'PaymentMethodId');
 		}
 	}, Serenity.PrefixedContext);
 	ss.initClass($NERP_Configuration_PaymentMethodGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
@@ -3488,63 +2866,6 @@
 		},
 		get_note: function() {
 			return this.byId(Serenity.StringEditor).call(this, 'Note');
-		},
-		get_projectId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ProjectId');
-		},
-		get_organogramId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'OrganogramId');
-		},
-		get_scopeId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ScopeId');
-		},
-		get_companyId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CompanyId');
-		},
-		get_statusId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'StatusId');
-		},
-		get_activeOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'ActiveOn');
-		},
-		get_inactiveOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'InactiveOn');
-		},
-		get_isActive: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsActive');
-		},
-		get_dbId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DbId');
-		},
-		get_createdBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CreatedBy');
-		},
-		get_createdOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'CreatedOn');
-		},
-		get_createdPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'CreatedPc');
-		},
-		get_updatedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'UpdatedBy');
-		},
-		get_updatedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'UpdatedOn');
-		},
-		get_updatedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'UpdatedPc');
-		},
-		get_deletedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DeletedBy');
-		},
-		get_deletedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'DeletedOn');
-		},
-		get_deletedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'DeletedPc');
-		},
-		get_isDelete: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsDelete');
 		}
 	}, Serenity.PrefixedContext);
 	ss.initClass($NERP_Configuration_ProjectGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
@@ -3561,63 +2882,6 @@
 		},
 		get_note: function() {
 			return this.byId(Serenity.StringEditor).call(this, 'Note');
-		},
-		get_projectId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ProjectId');
-		},
-		get_organogramId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'OrganogramId');
-		},
-		get_scopeId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ScopeId');
-		},
-		get_companyId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CompanyId');
-		},
-		get_statusId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'StatusId');
-		},
-		get_activeOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'ActiveOn');
-		},
-		get_inactiveOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'InactiveOn');
-		},
-		get_isActive: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsActive');
-		},
-		get_dbId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DbId');
-		},
-		get_createdBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CreatedBy');
-		},
-		get_createdOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'CreatedOn');
-		},
-		get_createdPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'CreatedPc');
-		},
-		get_updatedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'UpdatedBy');
-		},
-		get_updatedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'UpdatedOn');
-		},
-		get_updatedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'UpdatedPc');
-		},
-		get_deletedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DeletedBy');
-		},
-		get_deletedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'DeletedOn');
-		},
-		get_deletedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'DeletedPc');
-		},
-		get_isDelete: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsDelete');
 		}
 	}, Serenity.PrefixedContext);
 	ss.initClass($NERP_Configuration_SizeGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
@@ -3634,63 +2898,6 @@
 		},
 		get_note: function() {
 			return this.byId(Serenity.StringEditor).call(this, 'Note');
-		},
-		get_projectId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ProjectId');
-		},
-		get_organogramId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'OrganogramId');
-		},
-		get_scopeId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ScopeId');
-		},
-		get_companyId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CompanyId');
-		},
-		get_statusId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'StatusId');
-		},
-		get_activeOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'ActiveOn');
-		},
-		get_inactiveOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'InactiveOn');
-		},
-		get_isActive: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsActive');
-		},
-		get_dbId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DbId');
-		},
-		get_createdBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CreatedBy');
-		},
-		get_createdOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'CreatedOn');
-		},
-		get_createdPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'CreatedPc');
-		},
-		get_updatedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'UpdatedBy');
-		},
-		get_updatedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'UpdatedOn');
-		},
-		get_updatedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'UpdatedPc');
-		},
-		get_deletedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DeletedBy');
-		},
-		get_deletedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'DeletedOn');
-		},
-		get_deletedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'DeletedPc');
-		},
-		get_isDelete: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsDelete');
 		}
 	}, Serenity.PrefixedContext);
 	ss.initClass($NERP_Configuration_SpecificationGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
@@ -3707,63 +2914,6 @@
 		},
 		get_note: function() {
 			return this.byId(Serenity.StringEditor).call(this, 'Note');
-		},
-		get_projectId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ProjectId');
-		},
-		get_organogramId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'OrganogramId');
-		},
-		get_scopeId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ScopeId');
-		},
-		get_companyId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CompanyId');
-		},
-		get_statusId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'StatusId');
-		},
-		get_activeOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'ActiveOn');
-		},
-		get_inactiveOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'InactiveOn');
-		},
-		get_isActive: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsActive');
-		},
-		get_dbId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DbId');
-		},
-		get_createdBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CreatedBy');
-		},
-		get_createdOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'CreatedOn');
-		},
-		get_createdPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'CreatedPc');
-		},
-		get_updatedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'UpdatedBy');
-		},
-		get_updatedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'UpdatedOn');
-		},
-		get_updatedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'UpdatedPc');
-		},
-		get_deletedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DeletedBy');
-		},
-		get_deletedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'DeletedOn');
-		},
-		get_deletedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'DeletedPc');
-		},
-		get_isDelete: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsDelete');
 		}
 	}, Serenity.PrefixedContext);
 	ss.initClass($NERP_Configuration_StyleGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
@@ -3782,67 +2932,10 @@
 			return this.byId(Serenity.DecimalEditor).call(this, 'Rate');
 		},
 		get_isDefault: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsDefault');
+			return this.byId(Serenity.BooleanEditor).call(this, 'IsDefault');
 		},
 		get_note: function() {
 			return this.byId(Serenity.StringEditor).call(this, 'Note');
-		},
-		get_projectId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ProjectId');
-		},
-		get_organogramId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'OrganogramId');
-		},
-		get_scopeId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ScopeId');
-		},
-		get_companyId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CompanyId');
-		},
-		get_statusId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'StatusId');
-		},
-		get_activeOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'ActiveOn');
-		},
-		get_inactiveOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'InactiveOn');
-		},
-		get_isActive: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsActive');
-		},
-		get_dbId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DbId');
-		},
-		get_createdBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CreatedBy');
-		},
-		get_createdOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'CreatedOn');
-		},
-		get_createdPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'CreatedPc');
-		},
-		get_updatedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'UpdatedBy');
-		},
-		get_updatedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'UpdatedOn');
-		},
-		get_updatedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'UpdatedPc');
-		},
-		get_deletedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DeletedBy');
-		},
-		get_deletedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'DeletedOn');
-		},
-		get_deletedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'DeletedPc');
-		},
-		get_isDelete: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsDelete');
 		}
 	}, Serenity.PrefixedContext);
 	ss.initClass($NERP_Configuration_TaxGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
@@ -3865,63 +2958,6 @@
 		},
 		get_note: function() {
 			return this.byId(Serenity.StringEditor).call(this, 'Note');
-		},
-		get_projectId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ProjectId');
-		},
-		get_organogramId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'OrganogramId');
-		},
-		get_scopeId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ScopeId');
-		},
-		get_companyId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CompanyId');
-		},
-		get_statusId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'StatusId');
-		},
-		get_activeOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'ActiveOn');
-		},
-		get_inactiveOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'InactiveOn');
-		},
-		get_isActive: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsActive');
-		},
-		get_dbId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DbId');
-		},
-		get_createdBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CreatedBy');
-		},
-		get_createdOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'CreatedOn');
-		},
-		get_createdPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'CreatedPc');
-		},
-		get_updatedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'UpdatedBy');
-		},
-		get_updatedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'UpdatedOn');
-		},
-		get_updatedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'UpdatedPc');
-		},
-		get_deletedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DeletedBy');
-		},
-		get_deletedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'DeletedOn');
-		},
-		get_deletedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'DeletedPc');
-		},
-		get_isDelete: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsDelete');
 		}
 	}, Serenity.PrefixedContext);
 	ss.initClass($NERP_Configuration_UomGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
@@ -3986,63 +3022,6 @@
 		},
 		get_note: function() {
 			return this.byId(Serenity.StringEditor).call(this, 'Note');
-		},
-		get_projectId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ProjectId');
-		},
-		get_organogramId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'OrganogramId');
-		},
-		get_scopeId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ScopeId');
-		},
-		get_companyId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CompanyId');
-		},
-		get_statusId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'StatusId');
-		},
-		get_activeOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'ActiveOn');
-		},
-		get_inactiveOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'InactiveOn');
-		},
-		get_isActive: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsActive');
-		},
-		get_dbId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DbId');
-		},
-		get_createdBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CreatedBy');
-		},
-		get_createdOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'CreatedOn');
-		},
-		get_createdPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'CreatedPc');
-		},
-		get_updatedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'UpdatedBy');
-		},
-		get_updatedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'UpdatedOn');
-		},
-		get_updatedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'UpdatedPc');
-		},
-		get_deletedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DeletedBy');
-		},
-		get_deletedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'DeletedOn');
-		},
-		get_deletedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'DeletedPc');
-		},
-		get_isDelete: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsDelete');
 		}
 	}, Serenity.PrefixedContext);
 	ss.initClass($NERP_HR_EmployeeGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
@@ -4101,63 +3080,6 @@
 		},
 		get_note: function() {
 			return this.byId(Serenity.StringEditor).call(this, 'Note');
-		},
-		get_projectId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ProjectId');
-		},
-		get_organogramId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'OrganogramId');
-		},
-		get_scopeId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ScopeId');
-		},
-		get_companyId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CompanyId');
-		},
-		get_statusId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'StatusId');
-		},
-		get_activeOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'ActiveOn');
-		},
-		get_inactiveOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'InactiveOn');
-		},
-		get_isActive: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsActive');
-		},
-		get_dbId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DbId');
-		},
-		get_createdBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CreatedBy');
-		},
-		get_createdOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'CreatedOn');
-		},
-		get_createdPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'CreatedPc');
-		},
-		get_updatedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'UpdatedBy');
-		},
-		get_updatedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'UpdatedOn');
-		},
-		get_updatedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'UpdatedPc');
-		},
-		get_deletedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DeletedBy');
-		},
-		get_deletedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'DeletedOn');
-		},
-		get_deletedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'DeletedPc');
-		},
-		get_isDelete: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsDelete');
 		}
 	}, Serenity.PrefixedContext);
 	ss.initClass($NERP_Inventory_StockGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
@@ -4167,54 +3089,32 @@
 		createToolbarExtensions: function() {
 			var input = $('<input type="text" id="txtBarcode"/>');
 			this.toolbar.get_element().append(input);
-			input.click(function(e) {
-				this.get_items().Add({ ItemId: 3, Name: 'dfsa' });
-			});
+			input.click(ss.mkdel(this, function(e) {
+				this.addEntity({ ItemId: 3, Name: 'dfsa' });
+			}));
 			ss.makeGenericType(Serenity.EntityGrid$2, [Object, Object]).prototype.createToolbarExtensions.call(this);
+		},
+		validateEntity: function(row, id) {
+			if (!ss.makeGenericType($NERP_Common_GridEditorBase$1, [Object]).prototype.validateEntity.call(this, row, id)) {
+				return false;
+			}
+			row.ItemName = Q.getLookup('Configuration.Item').get_itemById()[ss.unbox(row.ItemId)].Name;
+			row.UomName = Q.getLookup('Configuration.Uom').get_itemById()[ss.unbox(row.UomId)].Name;
+			return true;
 		}
 	}, ss.makeGenericType($NERP_Common_GridEditorBase$1, [Object]), [Serenity.IDataGrid, Serenity.ISetEditValue, Serenity.IGetEditValue]);
 	ss.initClass($NERP_ItemTransaction_TransDetailForm, $asm, {
-		get_code: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'Code');
-		},
-		get_name: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'Name');
-		},
-		get_description: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'Description');
-		},
-		get_transId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'TransId');
-		},
-		get_transTypeId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'TransTypeId');
-		},
 		get_itemId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ItemId');
+			return this.byId(Serenity.LookupEditor).call(this, 'ItemId');
 		},
-		get_itemDetailId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ItemDetailId');
+		get_itemName: function() {
+			return this.byId(Serenity.StringEditor).call(this, 'ItemName');
 		},
 		get_uomId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'UomId');
+			return this.byId(Serenity.LookupEditor).call(this, 'UomId');
 		},
 		get_quantity: function() {
 			return this.byId(Serenity.DecimalEditor).call(this, 'Quantity');
-		},
-		get_sampleQty: function() {
-			return this.byId(Serenity.DecimalEditor).call(this, 'SampleQty');
-		},
-		get_overQty: function() {
-			return this.byId(Serenity.DecimalEditor).call(this, 'OverQty');
-		},
-		get_subTotalQty: function() {
-			return this.byId(Serenity.DecimalEditor).call(this, 'SubTotalQty');
-		},
-		get_maxQty: function() {
-			return this.byId(Serenity.DecimalEditor).call(this, 'MaxQty');
-		},
-		get_balanceQty: function() {
-			return this.byId(Serenity.DecimalEditor).call(this, 'BalanceQty');
 		},
 		get_unitPrice: function() {
 			return this.byId(Serenity.DecimalEditor).call(this, 'UnitPrice');
@@ -4231,128 +3131,8 @@
 		get_lineTotalAmt: function() {
 			return this.byId(Serenity.DecimalEditor).call(this, 'LineTotalAmt');
 		},
-		get_isReturn: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsReturn');
-		},
-		get_isOffer: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsOffer');
-		},
-		get_offerParentId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'OfferParentId');
-		},
-		get_accId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'AccId');
-		},
-		get_isDebit: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsDebit');
-		},
-		get_drAmt: function() {
-			return this.byId(Serenity.DecimalEditor).call(this, 'DrAmt');
-		},
-		get_crAmt: function() {
-			return this.byId(Serenity.DecimalEditor).call(this, 'CrAmt');
-		},
-		get_refTypeId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'RefTypeId');
-		},
-		get_refId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'RefId');
-		},
-		get_refDtlId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'RefDtlId');
-		},
-		get_refCode: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'RefCode');
-		},
-		get_refNo: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'RefNo');
-		},
-		get_refImgId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'RefImgId');
-		},
-		get_transRefTypeId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'TransRefTypeId');
-		},
-		get_transRefId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'TransRefId');
-		},
-		get_transRefDtlId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'TransRefDtlId');
-		},
-		get_transRefCode: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'TransRefCode');
-		},
-		get_transRefNo: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'TransRefNo');
-		},
-		get_transRefImgId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'TransRefImgId');
-		},
 		get_note: function() {
 			return this.byId(Serenity.StringEditor).call(this, 'Note');
-		},
-		get_projectId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ProjectId');
-		},
-		get_organogramId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'OrganogramId');
-		},
-		get_scopeId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ScopeId');
-		},
-		get_companyId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CompanyId');
-		},
-		get_statusId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'StatusId');
-		},
-		get_isApproved: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsApproved');
-		},
-		get_approvedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'ApprovedOn');
-		},
-		get_activeOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'ActiveOn');
-		},
-		get_inactiveOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'InactiveOn');
-		},
-		get_isActive: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsActive');
-		},
-		get_dbId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DbId');
-		},
-		get_createdBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CreatedBy');
-		},
-		get_createdOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'CreatedOn');
-		},
-		get_createdPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'CreatedPc');
-		},
-		get_updatedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'UpdatedBy');
-		},
-		get_updatedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'UpdatedOn');
-		},
-		get_updatedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'UpdatedPc');
-		},
-		get_deletedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DeletedBy');
-		},
-		get_deletedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'DeletedOn');
-		},
-		get_deletedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'DeletedPc');
-		},
-		get_isDelete: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsDelete');
 		}
 	}, Serenity.PrefixedContext);
 	ss.initClass($NERP_ItemTransaction_TransDetailGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
@@ -4360,9 +3140,6 @@
 	ss.initClass($NERP_ItemTransaction_TransForm, $asm, {
 		get_code: function() {
 			return this.byId(Serenity.StringEditor).call(this, 'Code');
-		},
-		get_name: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'Name');
 		},
 		get_description: function() {
 			return this.byId(Serenity.StringEditor).call(this, 'Description');
@@ -4376,62 +3153,8 @@
 		get_note: function() {
 			return this.byId(Serenity.StringEditor).call(this, 'Note');
 		},
-		get_projectId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ProjectId');
-		},
-		get_organogramId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'OrganogramId');
-		},
-		get_scopeId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ScopeId');
-		},
-		get_companyId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CompanyId');
-		},
-		get_statusId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'StatusId');
-		},
-		get_activeOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'ActiveOn');
-		},
-		get_inactiveOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'InactiveOn');
-		},
-		get_isActive: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsActive');
-		},
-		get_dbId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DbId');
-		},
-		get_createdBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CreatedBy');
-		},
-		get_createdOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'CreatedOn');
-		},
-		get_createdPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'CreatedPc');
-		},
-		get_updatedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'UpdatedBy');
-		},
-		get_updatedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'UpdatedOn');
-		},
-		get_updatedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'UpdatedPc');
-		},
-		get_deletedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DeletedBy');
-		},
-		get_deletedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'DeletedOn');
-		},
-		get_deletedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'DeletedPc');
-		},
-		get_isDelete: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsDelete');
+		get_transDetailRows: function() {
+			return this.byId($NERP_ItemTransaction_TransDetailEditor).call(this, 'TransDetailRows');
 		}
 	}, Serenity.PrefixedContext);
 	ss.initClass($NERP_ItemTransaction_TransGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
@@ -4460,63 +3183,6 @@
 		},
 		get_note: function() {
 			return this.byId(Serenity.StringEditor).call(this, 'Note');
-		},
-		get_projectId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ProjectId');
-		},
-		get_organogramId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'OrganogramId');
-		},
-		get_scopeId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ScopeId');
-		},
-		get_companyId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CompanyId');
-		},
-		get_statusId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'StatusId');
-		},
-		get_activeOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'ActiveOn');
-		},
-		get_inactiveOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'InactiveOn');
-		},
-		get_isActive: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsActive');
-		},
-		get_dbId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DbId');
-		},
-		get_createdBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CreatedBy');
-		},
-		get_createdOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'CreatedOn');
-		},
-		get_createdPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'CreatedPc');
-		},
-		get_updatedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'UpdatedBy');
-		},
-		get_updatedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'UpdatedOn');
-		},
-		get_updatedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'UpdatedPc');
-		},
-		get_deletedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DeletedBy');
-		},
-		get_deletedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'DeletedOn');
-		},
-		get_deletedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'DeletedPc');
-		},
-		get_isDelete: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsDelete');
 		}
 	}, Serenity.PrefixedContext);
 	ss.initClass($NERP_ItemTransaction_TransPaymentGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
@@ -4545,63 +3211,6 @@
 		},
 		get_note: function() {
 			return this.byId(Serenity.StringEditor).call(this, 'Note');
-		},
-		get_projectId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ProjectId');
-		},
-		get_organogramId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'OrganogramId');
-		},
-		get_scopeId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ScopeId');
-		},
-		get_companyId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CompanyId');
-		},
-		get_statusId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'StatusId');
-		},
-		get_activeOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'ActiveOn');
-		},
-		get_inactiveOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'InactiveOn');
-		},
-		get_isActive: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsActive');
-		},
-		get_dbId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DbId');
-		},
-		get_createdBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CreatedBy');
-		},
-		get_createdOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'CreatedOn');
-		},
-		get_createdPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'CreatedPc');
-		},
-		get_updatedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'UpdatedBy');
-		},
-		get_updatedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'UpdatedOn');
-		},
-		get_updatedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'UpdatedPc');
-		},
-		get_deletedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DeletedBy');
-		},
-		get_deletedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'DeletedOn');
-		},
-		get_deletedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'DeletedPc');
-		},
-		get_isDelete: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsDelete');
 		}
 	}, Serenity.PrefixedContext);
 	ss.initClass($NERP_ItemTransaction_TransTaxGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
@@ -5544,63 +4153,6 @@
 		},
 		get_note: function() {
 			return this.byId(Serenity.StringEditor).call(this, 'Note');
-		},
-		get_projectId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ProjectId');
-		},
-		get_organogramId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'OrganogramId');
-		},
-		get_scopeId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ScopeId');
-		},
-		get_companyId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CompanyId');
-		},
-		get_statusId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'StatusId');
-		},
-		get_activeOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'ActiveOn');
-		},
-		get_inactiveOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'InactiveOn');
-		},
-		get_isActive: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsActive');
-		},
-		get_dbId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DbId');
-		},
-		get_createdBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CreatedBy');
-		},
-		get_createdOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'CreatedOn');
-		},
-		get_createdPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'CreatedPc');
-		},
-		get_updatedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'UpdatedBy');
-		},
-		get_updatedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'UpdatedOn');
-		},
-		get_updatedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'UpdatedPc');
-		},
-		get_deletedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DeletedBy');
-		},
-		get_deletedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'DeletedOn');
-		},
-		get_deletedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'DeletedPc');
-		},
-		get_isDelete: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsDelete');
 		}
 	}, Serenity.PrefixedContext);
 	ss.initClass($NERP_Purchase_SupplierGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
@@ -5665,63 +4217,6 @@
 		},
 		get_note: function() {
 			return this.byId(Serenity.StringEditor).call(this, 'Note');
-		},
-		get_projectId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ProjectId');
-		},
-		get_organogramId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'OrganogramId');
-		},
-		get_scopeId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'ScopeId');
-		},
-		get_companyId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CompanyId');
-		},
-		get_statusId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'StatusId');
-		},
-		get_activeOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'ActiveOn');
-		},
-		get_inactiveOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'InactiveOn');
-		},
-		get_isActive: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsActive');
-		},
-		get_dbId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DbId');
-		},
-		get_createdBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'CreatedBy');
-		},
-		get_createdOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'CreatedOn');
-		},
-		get_createdPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'CreatedPc');
-		},
-		get_updatedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'UpdatedBy');
-		},
-		get_updatedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'UpdatedOn');
-		},
-		get_updatedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'UpdatedPc');
-		},
-		get_deletedBy: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'DeletedBy');
-		},
-		get_deletedOn: function() {
-			return this.byId(Serenity.DateEditor).call(this, 'DeletedOn');
-		},
-		get_deletedPc: function() {
-			return this.byId(Serenity.StringEditor).call(this, 'DeletedPc');
-		},
-		get_isDelete: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'IsDelete');
 		}
 	}, Serenity.PrefixedContext);
 	ss.initClass($NERP_Sales_CustomerGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
@@ -5733,8 +4228,8 @@
 			return config;
 		}
 	}, Serenity.HtmlContentEditor, [Serenity.IStringValue]);
-	ss.setMetadata($NERP_Accounting_COADialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Accounting.COA'), new Serenity.LocalTextPrefixAttribute('Accounting.COA'), new Serenity.ServiceAttribute('Accounting/COA')] });
-	ss.setMetadata($NERP_Accounting_COAGrid, { attr: [new Serenity.ColumnsKeyAttribute('Accounting.COA'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Accounting_COADialog), new Serenity.LocalTextPrefixAttribute('Accounting.COA'), new Serenity.ServiceAttribute('Accounting/COA')] });
+	ss.setMetadata($NERP_Accounting_COADialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Accounting.COA'), new Serenity.LocalTextPrefixAttribute('Accounting.COA'), new Serenity.ServiceAttribute('Accounting/COA')] });
+	ss.setMetadata($NERP_Accounting_COAGrid, { attr: [new Serenity.ColumnsKeyAttribute('Accounting.COA'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Accounting_COADialog), new Serenity.LocalTextPrefixAttribute('Accounting.COA'), new Serenity.ServiceAttribute('Accounting/COA')] });
 	ss.setMetadata($NERP_Administration_LanguageDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('LanguageName'), new Serenity.FormKeyAttribute('Administration.Language'), new Serenity.LocalTextPrefixAttribute('Administration.Language'), new Serenity.ServiceAttribute('Administration/Language')] });
 	ss.setMetadata($NERP_Administration_LanguageGrid, { attr: [new Serenity.ColumnsKeyAttribute('Administration.Language'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('LanguageName'), new Serenity.DialogTypeAttribute($NERP_Administration_LanguageDialog), new Serenity.LocalTextPrefixAttribute('Administration.Language'), new Serenity.ServiceAttribute('Administration/Language')] });
 	ss.setMetadata($NERP_Administration_PermissionCheckEditor, { attr: [new Serenity.EditorAttribute(), new Serenity.IdPropertyAttribute('Key')] });
@@ -5747,52 +4242,52 @@
 	ss.setMetadata($NERP_Administration_UserGrid, { attr: [new Serenity.IdPropertyAttribute('UserId'), new Serenity.NamePropertyAttribute('Username'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Administration_UserDialog), new Serenity.LocalTextPrefixAttribute('Administration.User'), new Serenity.ServiceAttribute('Administration/User')] });
 	ss.setMetadata($NERP_Common_GridEditorBase$1, { attr: [new Serenity.ElementAttribute('<div/>'), new Serenity.EditorAttribute(), new Serenity.IdPropertyAttribute('__id')] });
 	ss.setMetadata($NERP_Common_GridEditorDialog$1, { attr: [new Serenity.IdPropertyAttribute('__id')] });
-	ss.setMetadata($NERP_Configuration_BrandDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Configuration.Brand'), new Serenity.LocalTextPrefixAttribute('Configuration.Brand'), new Serenity.ServiceAttribute('Configuration/Brand')] });
-	ss.setMetadata($NERP_Configuration_BrandGrid, { attr: [new Serenity.ColumnsKeyAttribute('Configuration.Brand'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Configuration_BrandDialog), new Serenity.LocalTextPrefixAttribute('Configuration.Brand'), new Serenity.ServiceAttribute('Configuration/Brand')] });
-	ss.setMetadata($NERP_Configuration_ColorDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Configuration.Color'), new Serenity.LocalTextPrefixAttribute('Configuration.Color'), new Serenity.ServiceAttribute('Configuration/Color')] });
-	ss.setMetadata($NERP_Configuration_ColorGrid, { attr: [new Serenity.ColumnsKeyAttribute('Configuration.Color'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Configuration_ColorDialog), new Serenity.LocalTextPrefixAttribute('Configuration.Color'), new Serenity.ServiceAttribute('Configuration/Color')] });
-	ss.setMetadata($NERP_Configuration_CurrencyDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Configuration.Currency'), new Serenity.LocalTextPrefixAttribute('Configuration.Currency'), new Serenity.ServiceAttribute('Configuration/Currency')] });
-	ss.setMetadata($NERP_Configuration_CurrencyGrid, { attr: [new Serenity.ColumnsKeyAttribute('Configuration.Currency'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Configuration_CurrencyDialog), new Serenity.LocalTextPrefixAttribute('Configuration.Currency'), new Serenity.ServiceAttribute('Configuration/Currency')] });
-	ss.setMetadata($NERP_Configuration_GenericItemDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Configuration.GenericItem'), new Serenity.LocalTextPrefixAttribute('Configuration.GenericItem'), new Serenity.ServiceAttribute('Configuration/GenericItem')] });
-	ss.setMetadata($NERP_Configuration_GenericItemGrid, { attr: [new Serenity.ColumnsKeyAttribute('Configuration.GenericItem'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Configuration_GenericItemDialog), new Serenity.LocalTextPrefixAttribute('Configuration.GenericItem'), new Serenity.ServiceAttribute('Configuration/GenericItem')] });
-	ss.setMetadata($NERP_Configuration_ItemCategoryDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Configuration.ItemCategory'), new Serenity.LocalTextPrefixAttribute('Configuration.ItemCategory'), new Serenity.ServiceAttribute('Configuration/ItemCategory')] });
-	ss.setMetadata($NERP_Configuration_ItemCategoryGrid, { attr: [new Serenity.ColumnsKeyAttribute('Configuration.ItemCategory'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Configuration_ItemCategoryDialog), new Serenity.LocalTextPrefixAttribute('Configuration.ItemCategory'), new Serenity.ServiceAttribute('Configuration/ItemCategory')] });
-	ss.setMetadata($NERP_Configuration_ItemDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Configuration.Item'), new Serenity.LocalTextPrefixAttribute('Configuration.Item'), new Serenity.ServiceAttribute('Configuration/Item'), new Serenity.FlexifyAttribute(), new Serenity.MaximizableAttribute()] });
-	ss.setMetadata($NERP_Configuration_ItemGrid, { attr: [new Serenity.ColumnsKeyAttribute('Configuration.Item'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Configuration_ItemDialog), new Serenity.LocalTextPrefixAttribute('Configuration.Item'), new Serenity.ServiceAttribute('Configuration/Item')] });
-	ss.setMetadata($NERP_Configuration_ItemTaxDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Configuration.ItemTax'), new Serenity.LocalTextPrefixAttribute('Configuration.ItemTax'), new Serenity.ServiceAttribute('Configuration/ItemTax')] });
-	ss.setMetadata($NERP_Configuration_ItemTaxGrid, { attr: [new Serenity.ColumnsKeyAttribute('Configuration.ItemTax'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Configuration_ItemTaxDialog), new Serenity.LocalTextPrefixAttribute('Configuration.ItemTax'), new Serenity.ServiceAttribute('Configuration/ItemTax')] });
-	ss.setMetadata($NERP_Configuration_ModelDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Configuration.Model'), new Serenity.LocalTextPrefixAttribute('Configuration.Model'), new Serenity.ServiceAttribute('Configuration/Model')] });
-	ss.setMetadata($NERP_Configuration_ModelGrid, { attr: [new Serenity.ColumnsKeyAttribute('Configuration.Model'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Configuration_ModelDialog), new Serenity.LocalTextPrefixAttribute('Configuration.Model'), new Serenity.ServiceAttribute('Configuration/Model')] });
-	ss.setMetadata($NERP_Configuration_OrganogramDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Configuration.Organogram'), new Serenity.LocalTextPrefixAttribute('Configuration.Organogram'), new Serenity.ServiceAttribute('Configuration/Organogram')] });
-	ss.setMetadata($NERP_Configuration_OrganogramGrid, { attr: [new Serenity.ColumnsKeyAttribute('Configuration.Organogram'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Configuration_OrganogramDialog), new Serenity.LocalTextPrefixAttribute('Configuration.Organogram'), new Serenity.ServiceAttribute('Configuration/Organogram')] });
-	ss.setMetadata($NERP_Configuration_PaymentMethodDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Configuration.PaymentMethod'), new Serenity.LocalTextPrefixAttribute('Configuration.PaymentMethod'), new Serenity.ServiceAttribute('Configuration/PaymentMethod')] });
-	ss.setMetadata($NERP_Configuration_PaymentMethodGrid, { attr: [new Serenity.ColumnsKeyAttribute('Configuration.PaymentMethod'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Configuration_PaymentMethodDialog), new Serenity.LocalTextPrefixAttribute('Configuration.PaymentMethod'), new Serenity.ServiceAttribute('Configuration/PaymentMethod')] });
-	ss.setMetadata($NERP_Configuration_ProjectDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Configuration.Project'), new Serenity.LocalTextPrefixAttribute('Configuration.Project'), new Serenity.ServiceAttribute('Configuration/Project')] });
-	ss.setMetadata($NERP_Configuration_ProjectGrid, { attr: [new Serenity.ColumnsKeyAttribute('Configuration.Project'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Configuration_ProjectDialog), new Serenity.LocalTextPrefixAttribute('Configuration.Project'), new Serenity.ServiceAttribute('Configuration/Project')] });
-	ss.setMetadata($NERP_Configuration_SizeDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Configuration.Size'), new Serenity.LocalTextPrefixAttribute('Configuration.Size'), new Serenity.ServiceAttribute('Configuration/Size')] });
-	ss.setMetadata($NERP_Configuration_SizeGrid, { attr: [new Serenity.ColumnsKeyAttribute('Configuration.Size'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Configuration_SizeDialog), new Serenity.LocalTextPrefixAttribute('Configuration.Size'), new Serenity.ServiceAttribute('Configuration/Size')] });
-	ss.setMetadata($NERP_Configuration_SpecificationDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Configuration.Specification'), new Serenity.LocalTextPrefixAttribute('Configuration.Specification'), new Serenity.ServiceAttribute('Configuration/Specification')] });
-	ss.setMetadata($NERP_Configuration_SpecificationGrid, { attr: [new Serenity.ColumnsKeyAttribute('Configuration.Specification'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Configuration_SpecificationDialog), new Serenity.LocalTextPrefixAttribute('Configuration.Specification'), new Serenity.ServiceAttribute('Configuration/Specification')] });
-	ss.setMetadata($NERP_Configuration_StyleDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Configuration.Style'), new Serenity.LocalTextPrefixAttribute('Configuration.Style'), new Serenity.ServiceAttribute('Configuration/Style')] });
-	ss.setMetadata($NERP_Configuration_StyleGrid, { attr: [new Serenity.ColumnsKeyAttribute('Configuration.Style'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Configuration_StyleDialog), new Serenity.LocalTextPrefixAttribute('Configuration.Style'), new Serenity.ServiceAttribute('Configuration/Style')] });
-	ss.setMetadata($NERP_Configuration_TaxDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Configuration.Tax'), new Serenity.LocalTextPrefixAttribute('Configuration.Tax'), new Serenity.ServiceAttribute('Configuration/Tax')] });
-	ss.setMetadata($NERP_Configuration_TaxGrid, { attr: [new Serenity.ColumnsKeyAttribute('Configuration.Tax'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Configuration_TaxDialog), new Serenity.LocalTextPrefixAttribute('Configuration.Tax'), new Serenity.ServiceAttribute('Configuration/Tax')] });
-	ss.setMetadata($NERP_Configuration_UomDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Configuration.Uom'), new Serenity.LocalTextPrefixAttribute('Configuration.Uom'), new Serenity.ServiceAttribute('Configuration/Uom')] });
-	ss.setMetadata($NERP_Configuration_UomGrid, { attr: [new Serenity.ColumnsKeyAttribute('Configuration.Uom'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Configuration_UomDialog), new Serenity.LocalTextPrefixAttribute('Configuration.Uom'), new Serenity.ServiceAttribute('Configuration/Uom')] });
-	ss.setMetadata($NERP_HR_EmployeeDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('HR.Employee'), new Serenity.LocalTextPrefixAttribute('HR.Employee'), new Serenity.ServiceAttribute('HR/Employee')] });
-	ss.setMetadata($NERP_HR_EmployeeGrid, { attr: [new Serenity.ColumnsKeyAttribute('HR.Employee'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_HR_EmployeeDialog), new Serenity.LocalTextPrefixAttribute('HR.Employee'), new Serenity.ServiceAttribute('HR/Employee')] });
-	ss.setMetadata($NERP_Inventory_StockDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Inventory.Stock'), new Serenity.LocalTextPrefixAttribute('Inventory.Stock'), new Serenity.ServiceAttribute('Inventory/Stock')] });
-	ss.setMetadata($NERP_Inventory_StockGrid, { attr: [new Serenity.ColumnsKeyAttribute('Inventory.Stock'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Inventory_StockDialog), new Serenity.LocalTextPrefixAttribute('Inventory.Stock'), new Serenity.ServiceAttribute('Inventory/Stock')] });
-	ss.setMetadata($NERP_ItemTransaction_TransDetailDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('ItemTransaction.TransDetail'), new Serenity.LocalTextPrefixAttribute('ItemTransaction.TransDetail'), new Serenity.ServiceAttribute('ItemTransaction/TransDetail')] });
-	ss.setMetadata($NERP_ItemTransaction_TransDetailEditDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('ItemTransaction.TransDetail'), new Serenity.LocalTextPrefixAttribute('ItemTransaction.TransDetail')] });
+	ss.setMetadata($NERP_Configuration_BrandDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Configuration.Brand'), new Serenity.LocalTextPrefixAttribute('Configuration.Brand'), new Serenity.ServiceAttribute('Configuration/Brand')] });
+	ss.setMetadata($NERP_Configuration_BrandGrid, { attr: [new Serenity.ColumnsKeyAttribute('Configuration.Brand'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Configuration_BrandDialog), new Serenity.LocalTextPrefixAttribute('Configuration.Brand'), new Serenity.ServiceAttribute('Configuration/Brand')] });
+	ss.setMetadata($NERP_Configuration_ColorDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Configuration.Color'), new Serenity.LocalTextPrefixAttribute('Configuration.Color'), new Serenity.ServiceAttribute('Configuration/Color')] });
+	ss.setMetadata($NERP_Configuration_ColorGrid, { attr: [new Serenity.ColumnsKeyAttribute('Configuration.Color'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Configuration_ColorDialog), new Serenity.LocalTextPrefixAttribute('Configuration.Color'), new Serenity.ServiceAttribute('Configuration/Color')] });
+	ss.setMetadata($NERP_Configuration_CurrencyDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Configuration.Currency'), new Serenity.LocalTextPrefixAttribute('Configuration.Currency'), new Serenity.ServiceAttribute('Configuration/Currency')] });
+	ss.setMetadata($NERP_Configuration_CurrencyGrid, { attr: [new Serenity.ColumnsKeyAttribute('Configuration.Currency'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Configuration_CurrencyDialog), new Serenity.LocalTextPrefixAttribute('Configuration.Currency'), new Serenity.ServiceAttribute('Configuration/Currency')] });
+	ss.setMetadata($NERP_Configuration_GenericItemDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Configuration.GenericItem'), new Serenity.LocalTextPrefixAttribute('Configuration.GenericItem'), new Serenity.ServiceAttribute('Configuration/GenericItem')] });
+	ss.setMetadata($NERP_Configuration_GenericItemGrid, { attr: [new Serenity.ColumnsKeyAttribute('Configuration.GenericItem'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Configuration_GenericItemDialog), new Serenity.LocalTextPrefixAttribute('Configuration.GenericItem'), new Serenity.ServiceAttribute('Configuration/GenericItem')] });
+	ss.setMetadata($NERP_Configuration_ItemCategoryDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Configuration.ItemCategory'), new Serenity.LocalTextPrefixAttribute('Configuration.ItemCategory'), new Serenity.ServiceAttribute('Configuration/ItemCategory')] });
+	ss.setMetadata($NERP_Configuration_ItemCategoryGrid, { attr: [new Serenity.ColumnsKeyAttribute('Configuration.ItemCategory'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Configuration_ItemCategoryDialog), new Serenity.LocalTextPrefixAttribute('Configuration.ItemCategory'), new Serenity.ServiceAttribute('Configuration/ItemCategory')] });
+	ss.setMetadata($NERP_Configuration_ItemDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Configuration.Item'), new Serenity.LocalTextPrefixAttribute('Configuration.Item'), new Serenity.ServiceAttribute('Configuration/Item'), new Serenity.FlexifyAttribute(), new Serenity.MaximizableAttribute()] });
+	ss.setMetadata($NERP_Configuration_ItemGrid, { attr: [new Serenity.ColumnsKeyAttribute('Configuration.Item'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Configuration_ItemDialog), new Serenity.LocalTextPrefixAttribute('Configuration.Item'), new Serenity.ServiceAttribute('Configuration/Item')] });
+	ss.setMetadata($NERP_Configuration_ItemTaxDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Configuration.ItemTax'), new Serenity.LocalTextPrefixAttribute('Configuration.ItemTax'), new Serenity.ServiceAttribute('Configuration/ItemTax')] });
+	ss.setMetadata($NERP_Configuration_ItemTaxGrid, { attr: [new Serenity.ColumnsKeyAttribute('Configuration.ItemTax'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Configuration_ItemTaxDialog), new Serenity.LocalTextPrefixAttribute('Configuration.ItemTax'), new Serenity.ServiceAttribute('Configuration/ItemTax')] });
+	ss.setMetadata($NERP_Configuration_ModelDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Configuration.Model'), new Serenity.LocalTextPrefixAttribute('Configuration.Model'), new Serenity.ServiceAttribute('Configuration/Model')] });
+	ss.setMetadata($NERP_Configuration_ModelGrid, { attr: [new Serenity.ColumnsKeyAttribute('Configuration.Model'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Configuration_ModelDialog), new Serenity.LocalTextPrefixAttribute('Configuration.Model'), new Serenity.ServiceAttribute('Configuration/Model')] });
+	ss.setMetadata($NERP_Configuration_OrganogramDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Configuration.Organogram'), new Serenity.LocalTextPrefixAttribute('Configuration.Organogram'), new Serenity.ServiceAttribute('Configuration/Organogram')] });
+	ss.setMetadata($NERP_Configuration_OrganogramGrid, { attr: [new Serenity.ColumnsKeyAttribute('Configuration.Organogram'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Configuration_OrganogramDialog), new Serenity.LocalTextPrefixAttribute('Configuration.Organogram'), new Serenity.ServiceAttribute('Configuration/Organogram')] });
+	ss.setMetadata($NERP_Configuration_PaymentMethodDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Configuration.PaymentMethod'), new Serenity.LocalTextPrefixAttribute('Configuration.PaymentMethod'), new Serenity.ServiceAttribute('Configuration/PaymentMethod')] });
+	ss.setMetadata($NERP_Configuration_PaymentMethodGrid, { attr: [new Serenity.ColumnsKeyAttribute('Configuration.PaymentMethod'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Configuration_PaymentMethodDialog), new Serenity.LocalTextPrefixAttribute('Configuration.PaymentMethod'), new Serenity.ServiceAttribute('Configuration/PaymentMethod')] });
+	ss.setMetadata($NERP_Configuration_ProjectDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Configuration.Project'), new Serenity.LocalTextPrefixAttribute('Configuration.Project'), new Serenity.ServiceAttribute('Configuration/Project')] });
+	ss.setMetadata($NERP_Configuration_ProjectGrid, { attr: [new Serenity.ColumnsKeyAttribute('Configuration.Project'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Configuration_ProjectDialog), new Serenity.LocalTextPrefixAttribute('Configuration.Project'), new Serenity.ServiceAttribute('Configuration/Project')] });
+	ss.setMetadata($NERP_Configuration_SizeDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Configuration.Size'), new Serenity.LocalTextPrefixAttribute('Configuration.Size'), new Serenity.ServiceAttribute('Configuration/Size')] });
+	ss.setMetadata($NERP_Configuration_SizeGrid, { attr: [new Serenity.ColumnsKeyAttribute('Configuration.Size'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Configuration_SizeDialog), new Serenity.LocalTextPrefixAttribute('Configuration.Size'), new Serenity.ServiceAttribute('Configuration/Size')] });
+	ss.setMetadata($NERP_Configuration_SpecificationDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Configuration.Specification'), new Serenity.LocalTextPrefixAttribute('Configuration.Specification'), new Serenity.ServiceAttribute('Configuration/Specification')] });
+	ss.setMetadata($NERP_Configuration_SpecificationGrid, { attr: [new Serenity.ColumnsKeyAttribute('Configuration.Specification'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Configuration_SpecificationDialog), new Serenity.LocalTextPrefixAttribute('Configuration.Specification'), new Serenity.ServiceAttribute('Configuration/Specification')] });
+	ss.setMetadata($NERP_Configuration_StyleDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Configuration.Style'), new Serenity.LocalTextPrefixAttribute('Configuration.Style'), new Serenity.ServiceAttribute('Configuration/Style')] });
+	ss.setMetadata($NERP_Configuration_StyleGrid, { attr: [new Serenity.ColumnsKeyAttribute('Configuration.Style'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Configuration_StyleDialog), new Serenity.LocalTextPrefixAttribute('Configuration.Style'), new Serenity.ServiceAttribute('Configuration/Style')] });
+	ss.setMetadata($NERP_Configuration_TaxDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Configuration.Tax'), new Serenity.LocalTextPrefixAttribute('Configuration.Tax'), new Serenity.ServiceAttribute('Configuration/Tax')] });
+	ss.setMetadata($NERP_Configuration_TaxGrid, { attr: [new Serenity.ColumnsKeyAttribute('Configuration.Tax'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Configuration_TaxDialog), new Serenity.LocalTextPrefixAttribute('Configuration.Tax'), new Serenity.ServiceAttribute('Configuration/Tax')] });
+	ss.setMetadata($NERP_Configuration_UomDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Configuration.Uom'), new Serenity.LocalTextPrefixAttribute('Configuration.Uom'), new Serenity.ServiceAttribute('Configuration/Uom')] });
+	ss.setMetadata($NERP_Configuration_UomGrid, { attr: [new Serenity.ColumnsKeyAttribute('Configuration.Uom'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Configuration_UomDialog), new Serenity.LocalTextPrefixAttribute('Configuration.Uom'), new Serenity.ServiceAttribute('Configuration/Uom')] });
+	ss.setMetadata($NERP_HR_EmployeeDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('HR.Employee'), new Serenity.LocalTextPrefixAttribute('HR.Employee'), new Serenity.ServiceAttribute('HR/Employee')] });
+	ss.setMetadata($NERP_HR_EmployeeGrid, { attr: [new Serenity.ColumnsKeyAttribute('HR.Employee'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_HR_EmployeeDialog), new Serenity.LocalTextPrefixAttribute('HR.Employee'), new Serenity.ServiceAttribute('HR/Employee')] });
+	ss.setMetadata($NERP_Inventory_StockDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.FormKeyAttribute('Inventory.Stock'), new Serenity.LocalTextPrefixAttribute('Inventory.Stock'), new Serenity.ServiceAttribute('Inventory/Stock')] });
+	ss.setMetadata($NERP_Inventory_StockGrid, { attr: [new Serenity.ColumnsKeyAttribute('Inventory.Stock'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.DialogTypeAttribute($NERP_Inventory_StockDialog), new Serenity.LocalTextPrefixAttribute('Inventory.Stock'), new Serenity.ServiceAttribute('Inventory/Stock')] });
+	ss.setMetadata($NERP_ItemTransaction_TransDetailDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('ItemTransaction.TransDetail'), new Serenity.LocalTextPrefixAttribute('ItemTransaction.TransDetail'), new Serenity.ServiceAttribute('ItemTransaction/TransDetail')] });
+	ss.setMetadata($NERP_ItemTransaction_TransDetailEditDialog, { attr: [new Serenity.NamePropertyAttribute('ItemName'), new Serenity.FormKeyAttribute('ItemTransaction.TransDetail'), new Serenity.LocalTextPrefixAttribute('ItemTransaction.TransDetail')] });
 	ss.setMetadata($NERP_ItemTransaction_TransDetailEditor, { attr: [new Serenity.ColumnsKeyAttribute('ItemTransaction.TransDetail'), new Serenity.LocalTextPrefixAttribute('ItemTransaction.TransDetail'), new Serenity.DialogTypeAttribute($NERP_ItemTransaction_TransDetailEditDialog)] });
-	ss.setMetadata($NERP_ItemTransaction_TransDetailGrid, { attr: [new Serenity.ColumnsKeyAttribute('ItemTransaction.TransDetail'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_ItemTransaction_TransDetailDialog), new Serenity.LocalTextPrefixAttribute('ItemTransaction.TransDetail'), new Serenity.ServiceAttribute('ItemTransaction/TransDetail')] });
-	ss.setMetadata($NERP_ItemTransaction_TransDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('ItemTransaction.Trans'), new Serenity.LocalTextPrefixAttribute('ItemTransaction.Trans'), new Serenity.ServiceAttribute('ItemTransaction/Trans'), new Serenity.FlexifyAttribute(), new Serenity.MaximizableAttribute()] });
-	ss.setMetadata($NERP_ItemTransaction_TransGrid, { attr: [new Serenity.ColumnsKeyAttribute('ItemTransaction.Trans'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_ItemTransaction_TransDialog), new Serenity.LocalTextPrefixAttribute('ItemTransaction.Trans'), new Serenity.ServiceAttribute('ItemTransaction/Trans')] });
-	ss.setMetadata($NERP_ItemTransaction_TransPaymentDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('ItemTransaction.TransPayment'), new Serenity.LocalTextPrefixAttribute('ItemTransaction.TransPayment'), new Serenity.ServiceAttribute('ItemTransaction/TransPayment')] });
-	ss.setMetadata($NERP_ItemTransaction_TransPaymentGrid, { attr: [new Serenity.ColumnsKeyAttribute('ItemTransaction.TransPayment'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_ItemTransaction_TransPaymentDialog), new Serenity.LocalTextPrefixAttribute('ItemTransaction.TransPayment'), new Serenity.ServiceAttribute('ItemTransaction/TransPayment')] });
-	ss.setMetadata($NERP_ItemTransaction_TransTaxDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('ItemTransaction.TransTax'), new Serenity.LocalTextPrefixAttribute('ItemTransaction.TransTax'), new Serenity.ServiceAttribute('ItemTransaction/TransTax')] });
-	ss.setMetadata($NERP_ItemTransaction_TransTaxGrid, { attr: [new Serenity.ColumnsKeyAttribute('ItemTransaction.TransTax'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_ItemTransaction_TransTaxDialog), new Serenity.LocalTextPrefixAttribute('ItemTransaction.TransTax'), new Serenity.ServiceAttribute('ItemTransaction/TransTax')] });
+	ss.setMetadata($NERP_ItemTransaction_TransDetailGrid, { attr: [new Serenity.ColumnsKeyAttribute('ItemTransaction.TransDetail'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_ItemTransaction_TransDetailDialog), new Serenity.LocalTextPrefixAttribute('ItemTransaction.TransDetail'), new Serenity.ServiceAttribute('ItemTransaction/TransDetail')] });
+	ss.setMetadata($NERP_ItemTransaction_TransDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('ItemTransaction.Trans'), new Serenity.LocalTextPrefixAttribute('ItemTransaction.Trans'), new Serenity.ServiceAttribute('ItemTransaction/Trans'), new Serenity.FlexifyAttribute(), new Serenity.MaximizableAttribute()] });
+	ss.setMetadata($NERP_ItemTransaction_TransGrid, { attr: [new Serenity.ColumnsKeyAttribute('ItemTransaction.Trans'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_ItemTransaction_TransDialog), new Serenity.LocalTextPrefixAttribute('ItemTransaction.Trans'), new Serenity.ServiceAttribute('ItemTransaction/Trans')] });
+	ss.setMetadata($NERP_ItemTransaction_TransPaymentDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('ItemTransaction.TransPayment'), new Serenity.LocalTextPrefixAttribute('ItemTransaction.TransPayment'), new Serenity.ServiceAttribute('ItemTransaction/TransPayment')] });
+	ss.setMetadata($NERP_ItemTransaction_TransPaymentGrid, { attr: [new Serenity.ColumnsKeyAttribute('ItemTransaction.TransPayment'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_ItemTransaction_TransPaymentDialog), new Serenity.LocalTextPrefixAttribute('ItemTransaction.TransPayment'), new Serenity.ServiceAttribute('ItemTransaction/TransPayment')] });
+	ss.setMetadata($NERP_ItemTransaction_TransTaxDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('ItemTransaction.TransTax'), new Serenity.LocalTextPrefixAttribute('ItemTransaction.TransTax'), new Serenity.ServiceAttribute('ItemTransaction/TransTax')] });
+	ss.setMetadata($NERP_ItemTransaction_TransTaxGrid, { attr: [new Serenity.ColumnsKeyAttribute('ItemTransaction.TransTax'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_ItemTransaction_TransTaxDialog), new Serenity.LocalTextPrefixAttribute('ItemTransaction.TransTax'), new Serenity.ServiceAttribute('ItemTransaction/TransTax')] });
 	ss.setMetadata($NERP_Membership_ChangePasswordPanel, { attr: [new Serenity.PanelAttribute(), new Serenity.FormKeyAttribute('Membership.ChangePassword')] });
 	ss.setMetadata($NERP_Membership_ForgotPasswordPanel, { attr: [new Serenity.PanelAttribute(), new Serenity.FormKeyAttribute('Membership.ForgotPassword')] });
 	ss.setMetadata($NERP_Membership_LoginPanel, { attr: [new Serenity.FormKeyAttribute('Membership.Login')] });
@@ -5830,10 +4325,10 @@
 	ss.setMetadata($NERP_Northwind_SupplierGrid, { attr: [new Serenity.ColumnsKeyAttribute('Northwind.Supplier'), new Serenity.FilterableAttribute(), new Serenity.IdPropertyAttribute('SupplierID'), new Serenity.NamePropertyAttribute('CompanyName'), new Serenity.DialogTypeAttribute($NERP_Northwind_SupplierDialog), new Serenity.LocalTextPrefixAttribute('Northwind.Supplier'), new Serenity.ServiceAttribute('Northwind/Supplier')] });
 	ss.setMetadata($NERP_Northwind_TerritoryDialog, { attr: [new Serenity.IdPropertyAttribute('ID'), new Serenity.NamePropertyAttribute('TerritoryID'), new Serenity.FormKeyAttribute('Northwind.Territory'), new Serenity.LocalTextPrefixAttribute('Northwind.Territory'), new Serenity.ServiceAttribute('Northwind/Territory')] });
 	ss.setMetadata($NERP_Northwind_TerritoryGrid, { attr: [new Serenity.ColumnsKeyAttribute('Northwind.Territory'), new Serenity.IdPropertyAttribute('ID'), new Serenity.NamePropertyAttribute('TerritoryID'), new Serenity.DialogTypeAttribute($NERP_Northwind_TerritoryDialog), new Serenity.LocalTextPrefixAttribute('Northwind.Territory'), new Serenity.ServiceAttribute('Northwind/Territory')] });
-	ss.setMetadata($NERP_Purchase_SupplierDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Purchase.Supplier'), new Serenity.LocalTextPrefixAttribute('Purchase.Supplier'), new Serenity.ServiceAttribute('Purchase/Supplier')] });
-	ss.setMetadata($NERP_Purchase_SupplierGrid, { attr: [new Serenity.ColumnsKeyAttribute('Purchase.Supplier'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Purchase_SupplierDialog), new Serenity.LocalTextPrefixAttribute('Purchase.Supplier'), new Serenity.ServiceAttribute('Purchase/Supplier')] });
-	ss.setMetadata($NERP_Sales_CustomerDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Sales.Customer'), new Serenity.LocalTextPrefixAttribute('Sales.Customer'), new Serenity.ServiceAttribute('Sales/Customer')] });
-	ss.setMetadata($NERP_Sales_CustomerGrid, { attr: [new Serenity.ColumnsKeyAttribute('Sales.Customer'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Code'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Sales_CustomerDialog), new Serenity.LocalTextPrefixAttribute('Sales.Customer'), new Serenity.ServiceAttribute('Sales/Customer')] });
+	ss.setMetadata($NERP_Purchase_SupplierDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Purchase.Supplier'), new Serenity.LocalTextPrefixAttribute('Purchase.Supplier'), new Serenity.ServiceAttribute('Purchase/Supplier')] });
+	ss.setMetadata($NERP_Purchase_SupplierGrid, { attr: [new Serenity.ColumnsKeyAttribute('Purchase.Supplier'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Purchase_SupplierDialog), new Serenity.LocalTextPrefixAttribute('Purchase.Supplier'), new Serenity.ServiceAttribute('Purchase/Supplier')] });
+	ss.setMetadata($NERP_Sales_CustomerDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Sales.Customer'), new Serenity.LocalTextPrefixAttribute('Sales.Customer'), new Serenity.ServiceAttribute('Sales/Customer')] });
+	ss.setMetadata($NERP_Sales_CustomerGrid, { attr: [new Serenity.ColumnsKeyAttribute('Sales.Customer'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('Name'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($NERP_Sales_CustomerDialog), new Serenity.LocalTextPrefixAttribute('Sales.Customer'), new Serenity.ServiceAttribute('Sales/Customer')] });
 	ss.setMetadata($Serenity_HtmlBasicContentEditor, { attr: [new Serenity.EditorAttribute(), new System.ComponentModel.DisplayNameAttribute('Html Content (Basic Set)'), new Serenity.OptionsTypeAttribute(Serenity.HtmlContentEditorOptions), new Serenity.ElementAttribute('<textarea />')] });
 	(function() {
 		Q$Config.rootNamespaces.push('NERP');

@@ -63,6 +63,19 @@ namespace NERP.Common
         {
             view.SetItems(items, true);
         }
+        /// <summary>
+        /// Added by dfa
+        /// </summary>
+        /// <param name="item"></param>
+        protected virtual void AddEntity(TEntity item)
+        {
+            int? id = item.As<dynamic>().__id;
+            if (id == null)
+                item.As<dynamic>().__id = nextId++;
+
+            Items.Add(item);
+            view.SetItems(Items, true);
+        }
 
         protected virtual TEntity GetNewEntity()
         {

@@ -17,6 +17,11 @@ namespace NERP.ItemTransaction.Entities
     [ModifyPermission("Administration")]
     public sealed class TransRow : BaseRow
     {
+        public new String Name //Hide purpose
+        {
+            get { return Fields.Name[this]; }
+            set { Fields.Name[this] = value; }
+        }
 
         [DisplayName("Date Time"), Column("Date_Time")]
         public DateTime? DateTime

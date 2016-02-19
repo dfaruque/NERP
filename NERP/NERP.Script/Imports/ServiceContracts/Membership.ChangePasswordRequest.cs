@@ -16,6 +16,6 @@ namespace NERP.Membership
         public String NewPassword { get; set; }
         public String ConfirmPassword { get; set; }
     }
-
+    
 }
 

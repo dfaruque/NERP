@@ -17,7 +17,7 @@ namespace NERP.Configuration.Entities
     public sealed class TaxRow : BaseRow
     {
         
-        [DisplayName("Rate"), Size(18), Scale(6)]
+        [DisplayName("Rate"), Size(18), Scale(Statics.DecimalLength)]
         public Decimal? Rate
         {
             get { return Fields.Rate[this]; }
